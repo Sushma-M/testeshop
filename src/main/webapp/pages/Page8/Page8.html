@@ -1,0 +1,18 @@
+<wm-page data-ng-controller="Page8PageController" name="page1">
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-grid readonlygrid="true" name="grid2" dataset="bind:Variables.HrdbDepartmentData.dataSet">
+                <wm-grid-column binding="deptid" caption="Deptid" type="integer" primary-key="true" generator="identity" readonly="true" col-class="" col-ng-class="" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                <wm-grid-column binding="name" caption="Name" type="string" readonly="false" col-class="" col-ng-class="" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                <wm-grid-column binding="budget" caption="Budget" type="integer" readonly="false" col-class="" col-ng-class="" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                <wm-grid-column binding="q1" caption="Q1" type="integer" readonly="false" col-class="" col-ng-class="" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                <wm-grid-column binding="q2" caption="Q2" type="integer" readonly="false" col-class="" col-ng-class="" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                <wm-grid-column binding="q3" caption="Q3" type="integer" readonly="false" col-class="" col-ng-class="" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                <wm-grid-column binding="q4" caption="Q4" type="integer" readonly="false" col-class="" col-ng-class="" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                <wm-grid-column binding="deptcode" caption="Deptcode" type="string" readonly="false" col-class="" col-ng-class="" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                <wm-grid-column binding="location" caption="Location" type="string" readonly="false" col-class="" col-ng-class="" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                <wm-grid-column binding="tenantid" caption="Tenantid" type="integer" readonly="false" col-class="" col-ng-class="" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+            </wm-grid>
+        </wm-page-content>
+    </wm-content>
+</wm-page>

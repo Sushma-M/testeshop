@@ -1,0 +1,519 @@
+<style id="Dashboard.css">
+.dashboard-filter {
+    padding: 8px !important;
+}
+[name='productsChart'] {
+    background: -webkit-linear-gradient(left, #feffff 10%, #7ECFFA 100%);
+    /* Webkit (Chrome 11+) */
+    background: -webkit-linear-gradient(left, #feffff 10%, #7ECFFA 100%);
+    /* Mozilla Firefox */
+    background: -moz-linear-gradient(left, #feffff 10%, #7ECFFA 100%);
+    /* Opera */
+    background: -o-linear-gradient(left, #feffff 10%, #7ECFFA 100%);
+    /* IE10 Consumer Preview */
+    background: -ms-linear-gradient(left, #feffff 10%, #7ECFFA 100%);
+    /* W3C Markup, IE10 Release Preview */
+    background: linear-gradient(to right, #feffff 10%, #7ECFFA 100%);
+    /* IE9 */
+    filter: progid: DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#feffff, endColorstr=#7ECFFA);
+    /* IE6 & IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorStr='#feffff', EndColorStr='#7ECFFA')";
+    /* IE8, IE9 */
+}
+</style>
+<script id="Dashboard.js">
+Application.$controller("DashboardPageController", ['$scope', '$timeout',
+
+    function($scope, $timeout) {
+        "use strict";
+
+        /* perform any action with the variables inside this block(on-page-load) */
+        $scope.onPageVariablesReady = function() {
+            /*
+             * variables can be accessed through '$scope.Variables' service here
+             * e.g. $scope.Variables.staticVariable1.getData()
+             */
+            (function drawRegionsMap() {
+                if (google) {
+                    return;
+                }
+                var data = google.visualization.arrayToDataTable([
+                    ['State', 'Sales Revenue'],
+                    ['Illinois', 200],
+                    ['California', 300],
+                    ['New York', 20],
+                    ['New Jersy', 150]
+                ]);
+                var geochart = new google.visualization.GeoChart(
+                    WM.element('[name="revenueHeatMap"]')[0]);
+                geochart.draw(data, {
+                    region: "US",
+                    resolution: "provinces"
+                });
+            })();
+        };
+        /* perform any action with widgets inside this block */
+        $scope.onPageReady = function() {
+            /*
+             * widgets can be accessed through '$scope.Widgets' service here
+             * e.g. $scope.Widgets.byId(), $scope.Widgets.byName()or access widgets by $scope.Widgets.widgetName
+             */
+            $scope.filter();
+        };
+
+        $scope.weeklySalesonBeforeUpdate = function(variable, data) {
+            $scope.Widgets.weeklySales.dataset = data.length !== 0 ? data : [{
+                "SALES": 0,
+                "WEEK": 0
+            }];
+        };
+
+        $scope.weeklyLeadsonBeforeUpdate = function(variable, data) {
+            $scope.Widgets.weeklyLeads.dataset = data.length !== 0 ? data : [{
+                "LEADS": 0,
+                "WEEK": 0
+            }];
+        };
+
+        $scope.weeklyFollowUpsonBeforeUpdate = function(variable, data) {
+            $scope.Widgets.weeklyFollowUps.dataset = data.content.length !== 0 ? data.content : [{
+                "FOLLOWUPS": 0,
+                "WEEK": 0
+            }];
+        };
+
+
+        $scope.weeklyQuotesonBeforeUpdate = function(variable, data) {
+            $scope.Widgets.weeklyQuotes.dataset = data.content.length !== 0 ? data.content : [{
+                "QUOTES": 0,
+                "WEEK": 0
+            }];
+        };
+
+
+        $scope.weeklyConvertedonBeforeUpdate = function(variable, data) {
+            $scope.Widgets.weeklyConverted.dataset = data.content.length !== 0 ? data.content : [{
+                "SALES": 0,
+                "WEEK": 0
+            }];
+        };
+
+
+        $scope.salesByChannelsonBeforeUpdate = function(variable, data) {
+            $scope.Widgets.salesByChannels.dataset = data.content.length !== 0 ? data.content : [{
+                "CHANNEL": "Self",
+                "PERCENT": 0
+            }, {
+                "CHANNEL": "Brokers",
+                "PERCENT": 0
+            }, {
+                "CHANNEL": "Agencies",
+                "PERCENT": 0
+            }, {
+                "CHANNEL": "Partners",
+                "PERCENT": 0
+            }];
+        };
+
+
+        $scope.customersRatioonBeforeUpdate = function(variable, data) {
+            $scope.Widgets.customersRatio.dataset = data.content.length !== 0 ? data.content : [{
+                "TYPE": "New",
+                "PERCENT": 0
+            }, {
+                "TYPE": "Renewal",
+                "PERCENT": 0
+            }];
+        };
+
+        var topProducts = [];
+        $scope.topTrendingProductsonBeforeUpdate = function(variable, data) {
+            topProducts = [];
+            data.content.forEach(function(obj, i) {
+                topProducts.push(obj.PRODUCT);
+                obj.PRODUCT = i + 1;
+            });
+            reRenderText(750);
+            $scope.Widgets.productsChart.dataset = data.content.length !== 0 ? data.content : [{
+                "PRODUCT": 0,
+                "SALES": 0
+            }];
+        };
+
+        function reRenderText(timeOut) {
+            $timeout(function() {
+                $('[name="productsChart"]').find('rect').each(function(i) {
+                    $(this).next().attr("x", 10).attr("y", 15).text(topProducts[i]);
+                });
+            }, timeOut, false);
+        }
+
+        $(window).resize(function() {
+            reRenderText(100);
+        });
+
+        $scope.revenueHeatMaponBeforeUpdate = function(variable, data) {
+            var dataTable = [],
+                geochart,
+                gData;
+            dataTable.push(['State', 'Sales Revenue', 'Customers']);
+            data.content.forEach(function(obj, i) {
+                dataTable.push([obj.STATE, obj.SALES || 0, obj.CUSTOMERS])
+            });
+            if (dataTable.length === 1) {
+                dataTable.push(['', 0, 0]);
+            }
+            gData = google.visualization.arrayToDataTable(dataTable);
+            geochart = new google.visualization.GeoChart(WM.element('[name="revenueHeatMap"]')[0]);
+            geochart.draw(gData, {
+                region: "US",
+                resolution: "provinces"
+            });
+        };
+
+        function filter() {
+            var dataBinding = {
+                year: $scope.Widgets.yearFilter && +$scope.Widgets.yearFilter.datavalue || 2014,
+                month: $scope.Widgets.monthFilter && +$scope.Widgets.monthFilter.datavalue || 7
+            };
+
+            $scope.Variables.weeklySales.dataBinding = $scope.Variables.weeklyLeads.dataBinding = $scope.Variables.weeklyQuotes.dataBinding = $scope.Variables.weeklyFollowUps.dataBinding = $scope.Variables.weeklyConverted.dataBinding = $scope.Variables.salesByChannels.dataBinding = $scope.Variables.customersRatio.dataBinding = $scope.Variables.topTrendingProducts.dataBinding = $scope.Variables.revenueHeatMap.dataBinding = dataBinding;
+
+            $scope.Variables.weeklySales.update();
+            $scope.Variables.weeklyLeads.update();
+            $scope.Variables.weeklyQuotes.update();
+            $scope.Variables.weeklyFollowUps.update();
+            $scope.Variables.weeklyConverted.update();
+            $scope.Variables.salesByChannels.update();
+            $scope.Variables.customersRatio.update();
+            $scope.Variables.topTrendingProducts.update();
+            $scope.Variables.revenueHeatMap.update();
+        }
+
+        $scope.filter = function() {
+            var dataBinding = {
+                year: $scope.Widgets.yearFilter && +$scope.Widgets.yearFilter.datavalue || 2014,
+                month: $scope.Widgets.monthFilter && +$scope.Widgets.monthFilter.datavalue || 7
+            };
+
+            $scope.Variables.weeklySales.dataBinding = $scope.Variables.weeklyLeads.dataBinding = $scope.Variables.weeklyQuotes.dataBinding = $scope.Variables.weeklyFollowUps.dataBinding = $scope.Variables.weeklyConverted.dataBinding = $scope.Variables.salesByChannels.dataBinding = $scope.Variables.customersRatio.dataBinding = $scope.Variables.topTrendingProducts.dataBinding = $scope.Variables.revenueHeatMap.dataBinding = dataBinding;
+
+            $scope.Variables.weeklySales.update();
+            $scope.Variables.weeklyLeads.update();
+            $scope.Variables.weeklyQuotes.update();
+            $scope.Variables.weeklyFollowUps.update();
+            $scope.Variables.weeklyConverted.update();
+            $scope.Variables.salesByChannels.update();
+            $scope.Variables.customersRatio.update();
+            $scope.Variables.topTrendingProducts.update();
+            $scope.Variables.revenueHeatMap.update();
+        };
+
+        $scope.clear = function() {
+            $scope.Widgets.yearFilter && ($scope.Widgets.yearFilter._model_ = "2014");
+            $scope.Widgets.monthFilter && ($scope.Widgets.monthFilter._model_ = "07");
+            $scope.filter();
+        }
+
+    }
+]);
+</script>
+<script id="Dashboard.variables.json">
+var _DashboardPage_Variables_ ={
+	"weeklySales": {
+		"name": "weeklySales",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"year": "bind:Widgets.yearFilter.datavalue",
+			"month": "bind:Widgets.monthFilter.datavalue"
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 1000,
+		"designMaxResults": 10,
+		"operation": "weeklySales",
+		"service": "insurancedb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"onBeforeUpdate": "Javascript",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404489045667"
+	},
+	"weeklyLeads": {
+		"name": "weeklyLeads",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"year": "",
+			"month": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 1000,
+		"designMaxResults": 10,
+		"operation": "weeklyLeads",
+		"service": "insurancedb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"onBeforeUpdate": "Javascript",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404709599784"
+	},
+	"weeklyQuotes": {
+		"name": "weeklyQuotes",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"year": "",
+			"month": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 1000,
+		"designMaxResults": 10,
+		"operation": "weeklyQuotes",
+		"service": "insurancedb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"onBeforeUpdate": "Javascript",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404709627567"
+	},
+	"weeklyFollowUps": {
+		"name": "weeklyFollowUps",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"year": "",
+			"month": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 1000,
+		"designMaxResults": 10,
+		"operation": "weeklyFollowUps",
+		"service": "insurancedb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"onBeforeUpdate": "Javascript",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404709656577"
+	},
+	"weeklyConverted": {
+		"name": "weeklyConverted",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"year": "",
+			"month": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 1000,
+		"designMaxResults": 10,
+		"operation": "weeklyConverted",
+		"service": "insurancedb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"onBeforeUpdate": "Javascript",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404709683318"
+	},
+	"salesByChannels": {
+		"name": "salesByChannels",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"year": "",
+			"month": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 1000,
+		"designMaxResults": 10,
+		"operation": "salesByChannels",
+		"service": "insurancedb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"onBeforeUpdate": "Javascript",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404709733341"
+	},
+	"customersRatio": {
+		"name": "customersRatio",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"year": "",
+			"month": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 1000,
+		"designMaxResults": 10,
+		"operation": "customersRatio",
+		"service": "insurancedb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"onBeforeUpdate": "Javascript",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404709779879"
+	},
+	"topTrendingProducts": {
+		"name": "topTrendingProducts",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"year": "",
+			"month": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 5,
+		"designMaxResults": 10,
+		"operation": "topTrendingProducts",
+		"service": "insurancedb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"onBeforeUpdate": "Javascript",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404709800110"
+	},
+	"revenueHeatMap": {
+		"name": "revenueHeatMap",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"year": "",
+			"month": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 1000,
+		"designMaxResults": 10,
+		"operation": "revenueHeatMap",
+		"service": "insurancedb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"onBeforeUpdate": "Javascript",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404709828940"
+	}
+}
+</script>
+<script id="Dashboard.html" type="text/ng-template">
+<wm-page name="page1" data-ng-controller="DashboardPageController" columns="2" layouttype="two-column"> 
+ <wm-header name="header" content="header" height="auto"></wm-header> 
+ <wm-top-nav name="top-nav" content="topnav"></wm-top-nav> 
+ <wm-content name="content1"> 
+  <wm-row name="row1"> 
+   <wm-left-panel contentwidth="2" name="leftpanel" content="systemvitalsfilter"></wm-left-panel> 
+   <wm-column class="app-content-column" name="mainContent" paddingright="15" paddingleft="15" columnwidth="12"> 
+    <wm-layoutgrid name="layoutgrid1" columns="3" height="auto" rows="3"> 
+     <wm-gridrow name="gridrow2"> 
+      <wm-gridcolumn name="gridcolumn1" paddingright="1" paddingleft="1" columnwidth="6" paddingunit="em" paddingbottom="1" paddingtop="1"> 
+       <wm-label caption="Weekly Sales" name="label4" width="100%" color="#929292"></wm-label> 
+       <wm-chart type="Area" name="weeklySales" height="360" dataset="bind:Variables.weeklySales.dataSet.content" xaxislabel="Week" xaxisdatakey="WEEK" yaxislabel="Sales" yaxisdatakey="SALES" theme="Retro"></wm-chart> 
+      </wm-gridcolumn> 
+      <wm-gridcolumn name="gridcolumn2" paddingright="1" paddingleft="1" columnwidth="3" paddingunit="em" paddingbottom="1" paddingtop="1"> 
+       <wm-label caption="Leads" name="label4" width="100%" color="#929292"></wm-label> 
+       <wm-chart type="Line" name="weeklyLeads" height="160" offsetbottom="40" offsetleft="30" offsettop="0" offsetright="20" dataset="bind:Variables.weeklyLeads.dataSet.content" xaxislabel="Week" xaxisdatakey="WEEK" yaxislabel="Leads" yaxisdatakey="LEADS" theme="Annabelle"></wm-chart> 
+       <wm-label caption="Follow-ups" name="label4" width="100%" margintop="1" marginunit="em" color="#929292"></wm-label> 
+       <wm-chart type="Line" name="weeklyFollowUps" height="160" offsetbottom="40" offsetleft="30" offsettop="0" offsetright="20" dataset="bind:Variables.weeklyFollowUps.dataSet.content" xaxislabel="Week" xaxisdatakey="WEEK" yaxislabel="Follow Ups" yaxisdatakey="FOLLOWUPS" theme="Retro"></wm-chart> 
+      </wm-gridcolumn> 
+      <wm-gridcolumn name="gridcolumn10" paddingright="1" paddingleft="1" columnwidth="3" paddingunit="em" paddingbottom="1" paddingtop="1"> 
+       <wm-label caption="Quotes" name="label4" width="100%" color="#929292"></wm-label> 
+       <wm-chart type="Line" name="weeklyQuotes" height="160" offsetbottom="40" offsetleft="30" offsetright="20" offsettop="0" dataset="bind:Variables.weeklyQuotes.dataSet.content" xaxislabel="Week" xaxisdatakey="WEEK" yaxislabel="Quotes" yaxisdatakey="QUOTES" theme="Azure"></wm-chart> 
+       <wm-label caption="Converted" name="label4" width="100%" margintop="1" marginunit="em" color="#929292"></wm-label> 
+       <wm-chart type="Line" name="weeklyConverted" height="160" offsetbottom="40" offsetleft="30" offsettop="0" offsetright="20" dataset="bind:Variables.weeklyConverted.dataSet.content" xaxislabel="Week" xaxisdatakey="WEEK" yaxislabel="Sales" yaxisdatakey="SALES" theme="Orient"></wm-chart> 
+      </wm-gridcolumn> 
+     </wm-gridrow> 
+     <wm-gridrow name="gridrow3"> 
+      <wm-gridcolumn name="gridcolumn4" paddingright="1" paddingleft="1" paddingunit="em" paddingbottom="1" paddingtop="1"> 
+       <wm-label caption="Channels" name="label4" width="100%" color="#929292"></wm-label> 
+       <wm-chart type="Donut" theme="Terrestrial" name="salesByChannels" height="200" dataset="bind:Variables.salesByChannels.dataSet.content" xaxisdatakey="CHANNEL" yaxisdatakey="PERCENT" offsettop="0" offsetright="10" offsetleft="10" offsetbottom="15"></wm-chart> 
+      </wm-gridcolumn> 
+      <wm-gridcolumn name="gridcolumn5" paddingright="1" paddingleft="1" paddingunit="em" paddingbottom="1" paddingtop="1"> 
+       <wm-label caption="Customers" name="label4" width="100%" color="#929292"></wm-label> 
+       <wm-chart type="Donut" theme="Azure" name="customersRatio" height="200" dataset="bind:Variables.customersRatio.dataSet.content" xaxisdatakey="TYPE" yaxisdatakey="PERCENT" offsettop="0" offsetleft="10" offsetright="10" offsetbottom="10"></wm-chart> 
+      </wm-gridcolumn> 
+      <wm-gridcolumn name="gridcolumn11" paddingright="1" paddingleft="1" paddingunit="em" paddingbottom="1" paddingtop="1"> 
+       <wm-label caption="Products" name="label4" width="100%" color="#929292"></wm-label> 
+       <wm-chart type="Bar" name="productsChart" height="200" backgroundgradient="linear-gradient(left, #feffff 10%,#7ECFFA 100%)" dataset="bind:Variables.topTrendingProducts.dataSet.content" offsettop="0" offsetleft="30" offsetright="20" offsetbottom="40" yaxislabel="Sales" yaxisdatakey="SALES" xaxislabel="Products" xaxisdatakey="PRODUCT" showlabels="true" tooltips="true" theme="Terrestrial"></wm-chart> 
+      </wm-gridcolumn> 
+     </wm-gridrow> 
+    </wm-layoutgrid> 
+    <wm-panel name="revenueHeatMapPanel" paddingright="1" paddingleft="1" paddingunit="em" paddingbottom="1" paddingtop="1"> 
+     <wm-label name="label4" width="100%" color="#8E8E8E" caption="Revenue Heat Map"></wm-label> 
+     <wm-panel name="revenueHeatMap" width="100%" class="app-chart"></wm-panel> 
+    </wm-panel> 
+   </wm-column> 
+  </wm-row> 
+ </wm-content> 
+ <wm-footer name="footer" content="footer"></wm-footer> 
+</wm-page>
+</script>

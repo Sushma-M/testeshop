@@ -1,0 +1,196 @@
+{
+	"usMapLocations": {
+		"type": "string",
+		"isList": true,
+		"owner": "Page",
+		"dataSet": [{
+			"coords": {
+				"lat": 32.361538,
+				"lng": -86.279118
+			},
+			"info": "Montgomery, Alabama"
+		}, {
+			"coords": {
+				"lat": 58.301935,
+				"lng": -134.41974
+			},
+			"info": "Juneau, Alaska"
+		}, {
+			"coords": {
+				"lat": 33.448457,
+				"lng": -112.073844
+			},
+			"info": "Phoenix, Arizona"
+		}, {
+			"coords": {
+				"lat": 34.736009,
+				"lng": -92.331122
+			},
+			"info": "Little Rock, Arkansas"
+		}, {
+			"coords": {
+				"lat": 38.555605,
+				"lng": -121.468926
+			},
+			"info": "Sacramento, California"
+		}, {
+			"coords": {
+				"lat": 39.7391667,
+				"lng": -104.984167
+			},
+			"info": "Denver, Colorado"
+		}, {
+			"coords": {
+				"lat": 41.767,
+				"lng": -72.677
+			},
+			"info": "Hartford, Connecticut"
+		}, {
+			"coords": {
+				"lat": 39.161921,
+				"lng": -75.526755
+			},
+			"info": "Dover, Delaware"
+		}, {
+			"coords": {
+				"lat": 30.4518,
+				"lng": -84.27277
+			},
+			"info": "Tallahassee, Florida"
+		}, {
+			"coords": {
+				"lat": 33.76,
+				"lng": -84.39
+			},
+			"info": "Atlanta, Georgia"
+		}, {
+			"coords": {
+				"lat": 21.30895,
+				"lng": -157.826182
+			},
+			"info": "Honolulu, Hawaii"
+		}, {
+			"coords": {
+				"lat": 43.613739,
+				"lng": -116.237651
+			},
+			"info": "Boise, Idaho"
+		}, {
+			"coords": {
+				"lat": 39.78325,
+				"lng": -89.650373
+			},
+			"info": "Springfield, Illinois"
+		}, {
+			"coords": {
+				"lat": 39.790942,
+				"lng": -86.147685
+			},
+			"info": "Indianapolis, Indiana"
+		}, {
+			"coords": {
+				"lat": 41.590939,
+				"lng": -93.620866
+			},
+			"info": "Des Moines, Iowa"
+		}, {
+			"coords": {
+				"lat": 39.04,
+				"lng": -95.69
+			},
+			"info": "Topeka, Kansas"
+		}, {
+			"coords": {
+				"lat": 38.197274,
+				"lng": -84.86311
+			},
+			"info": "Frankfort, Kentucky"
+		}, {
+			"coords": {
+				"lat": 30.45809,
+				"lng": -91.140229
+			},
+			"info": "Baton Rouge, Louisiana"
+		}, {
+			"coords": {
+				"lat": 44.323535,
+				"lng": -69.765261
+			},
+			"info": "Augusta, Augusta"
+		}, {
+			"coords": {
+				"lat": 38.972945,
+				"lng": -76.501157
+			},
+			"info": "Annapolis, Maryland"
+		}, {
+			"coords": {
+				"lat": 42.2352,
+				"lng": -71.0275
+			},
+			"info": "Boston, Massachusetts"
+		}, {
+			"coords": {
+				"lat": 42.7335,
+				"lng": -84.5467
+			},
+			"info": "Lansing, Michigan"
+		}, {
+			"coords": {
+				"lat": 44.95,
+				"lng": -93.094
+			},
+			"info": "Saint Paul, Minnesota"
+		}, {
+			"coords": {
+				"lat": 32.32,
+				"lng": -90.207
+			},
+			"info": "Jackson, Mississippi"
+		}, {
+			"coords": {
+				"lat": 38.572954,
+				"lng": -92.189283
+			},
+			"info": "Jefferson City, Missouri"
+		}, {
+			"coords": {
+				"lat": 46.595805,
+				"lng": -112.027031
+			},
+			"info": "Helana, Montana"
+		}, {
+			"coords": {
+				"lat": 40.809868,
+				"lng": -96.675345
+			},
+			"info": "Lincoln, Nebraska"
+		}, {
+			"coords": {
+				"lat": 39.160949,
+				"lng": -119.753877
+			},
+			"info": "Carson City, Nevada"
+		}, {
+			"coords": {
+				"lat": 43.220093,
+				"lng": -71.549127
+			},
+			"info": "Concord, New Hampshire"
+		}, {
+			"coords": {
+				"lat": 40.221741,
+				"lng": -74.756138
+			},
+			"info": "Trenton, New Jersey"
+		}],
+		"dataBinding": {
+			"dataValue": "",
+			"coords": "",
+			"info": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1402638997053"
+	}
+}

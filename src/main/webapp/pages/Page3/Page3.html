@@ -1,0 +1,11 @@
+<wm-page data-ng-controller="Page3PageController" name="page1">
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-grid readonlygrid="true" name="grid1" dataset="bind:Variables.FdaInvoke.dataSet.results">
+                <wm-grid-column binding="count" caption="Count" col-class="" col-ng-class="" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                <wm-grid-column binding="term" caption="Term" col-class="" col-ng-class="" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+            </wm-grid>
+            <wm-button caption="Button" name="button1" on-click="FdaInvoke"></wm-button>
+        </wm-page-content>
+    </wm-content>
+</wm-page>

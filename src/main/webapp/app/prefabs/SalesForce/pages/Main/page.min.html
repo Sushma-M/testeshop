@@ -1,0 +1,258 @@
+<style id="Main.css">
+
+</style>
+<script id="Main.js">
+Application.$controller("SalesForceController", ["$scope", "Widgets", "Variables", "CONSTANTS",
+    function($scope, Widgets, Variables, CONSTANTS) {
+        "use strict";
+
+        $scope.onPageVariablesReady = function() {}
+
+        function getSalesForceData() {
+            if (CONSTANTS.isRunMode &&
+                !isBindExpr(Variables.OAuthToken.dataBinding.userName) &&
+                !isBindExpr(Variables.OAuthToken.dataBinding.password) &&
+                !isBindExpr(Variables.OAuthToken.dataBinding.clientId) &&
+                !isBindExpr(Variables.OAuthToken.dataBinding.clientSecret) &&
+                !isBindExpr(Variables.SalesForceAPIExecuteQuery.dataBinding.query)) {
+                Variables.call("getData", "OAuthToken", {
+                    scope: $scope
+                }, function(data) {
+                    Variables.SalesForceAPIExecuteQuery.dataBinding.accessToken = data.result.access_token;
+                    Variables.SalesForceAPIExecuteQuery.dataBinding.endPointUrl = data.result.instance_url;
+                    Variables.call("getData", "SalesForceAPIExecuteQuery", {
+                        scope: $scope
+                    }, function(data) {
+                        $scope.result = data.result;
+                    });
+                });
+            }
+        }
+
+        function isBindExpr(expr) {
+            return !expr || expr.indexOf("bind:") === 0;
+        }
+
+        /* Define the property change handler. This function will be triggered when there is a change in the prefab property */
+        function propertyChangeHandler(key, newVal) {
+            //         switch (key) {
+            //             case "username":
+            //                 Variables.OAuthToken.dataBinding.userName = newVal;
+            // 	getSalesForceData();
+            //                 break;
+            //             case "password":
+            //                 Variables.OAuthToken.dataBinding.password = newVal;
+            // 	getSalesForceData();
+            //                 break;
+            //             case "clientid":
+            //                 Variables.OAuthToken.dataBinding.clientId = newVal;
+            // 	getSalesForceData();
+            //                 break;
+            //             case "clientsecret":
+            //                 Variables.OAuthToken.dataBinding.clientSecret = newVal;
+            // 	getSalesForceData();
+            //                 break;
+            //             case "query":				
+            //                 Variables.SalesForceAPIExecuteQuery.dataBinding.query = newVal;
+            // 	getSalesForceData();
+            // 	if(CONSTANTS.isStudioMode && newVal) {
+            // 		/*to get all the field values of the query result */
+            // 		var match = newVal.match(/select(.*)from/i);
+            // 		$scope.result = {};
+            // 		(match && match[1].split(',')).forEach(function (a) {$scope.result[a.trim()] = "";});						
+            // 	}
+            //                 break;
+            //         }
+        }
+
+        /* register the property change handler */
+        $scope.propertyManager.add($scope.propertyManager.ACTIONS.CHANGE, propertyChangeHandler);
+
+        /*hide the prefab in run mode*/
+        if (CONSTANTS.isRunMode) {
+            $scope.show = false;
+            $scope.height = 0;
+        }
+
+        $scope.SalesForceAPIExecuteQueryonResult = function(variable, data) {
+
+        };
+
+        $scope.SalesForceAPIExecuteQueryonSuccess = function(variable, data) {
+
+        };
+
+    }
+]);
+</script>
+<script id="Main.variables.json">
+var _MainPage_Variables_ ={
+	"userName": {
+		"name": "userName",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"dataValue": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1400221896913"
+	},
+	"password": {
+		"name": "password",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"dataValue": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1400221920158"
+	},
+	"clientid": {
+		"name": "clientid",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"dataValue": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1400221941194"
+	},
+	"clientsecret": {
+		"name": "clientsecret",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"dataValue": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1400221961508"
+	},
+	"query": {
+		"name": "query",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"dataValue": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1400223418538"
+	},
+	"accessToken": {
+		"name": "accessToken",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"dataValue": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1400224317211"
+	},
+	"endPointUrl": {
+		"name": "endPointUrl",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"dataValue": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1400224336024"
+	},
+	"SalesForceAPIExecuteQuery": {
+		"type": "map",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"username": "bind:username",
+			"password": "bind:password",
+			"clientId": "bind:clientid",
+			"clientSecret": "bind:clientsecret",
+			"query": "bind:query"
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 20,
+		"designMaxResults": 10,
+		"service": "SalesForceAPI",
+		"operation": "executeQuery",
+		"operationType": null,
+		"startUpdate": true,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"serviceType": "JavaService",
+		"category": "wm.ServiceVariable",
+		"isDefault": true,
+		"wmServiceOperationInfo": {
+			"httpMethod": "POST",
+			"name": "executeQuery",
+			"parameters": [
+				{
+					"name": "username",
+					"parameterType": "QUERY"
+				},
+				{
+					"name": "password",
+					"parameterType": "QUERY"
+				},
+				{
+					"name": "clientId",
+					"parameterType": "QUERY"
+				},
+				{
+					"name": "clientSecret",
+					"parameterType": "QUERY"
+				},
+				{
+					"name": "query",
+					"parameterType": "QUERY"
+				}
+			],
+			"relativePath": "/salesForceAPI/executeQuery"
+		},
+		"_id": "wm-wm.ServiceVariable1426089785417",
+		"name": "SalesForceAPIExecuteQuery"
+	}
+}
+</script>
+<script id="Main.html" type="text/ng-template">
+<wm-page data-ng-controller="SalesForceController" name="page1"><i class="wm-icon24 prefab"></i>
+</wm-page>
+</script>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="fda" CRUDService="false" type="RestService" springFile="fda.spring.xml">
+    <operation name="invoke">
+        <parameter name="count" typeRef="java.lang.String" isList="false"/>
+        <parameter name="search" typeRef="java.lang.String" isList="false"/>
+        <return typeRef="fda.RootResponse" isList="false"/>
+    </operation>
+    <dataobjects>
+        <dataobject javaType="fda.meta" name="meta" supportsQuickData="false">
+            <element name="disclaimer" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="last_updated" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="license" typeRef="java.lang.String" isList="false" allowNull="false"/>
+        </dataobject>
+        <dataobject javaType="fda.resultsEntryItem" name="resultsEntryItem" supportsQuickData="false">
+            <element name="count" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="term" typeRef="java.lang.String" isList="false" allowNull="false"/>
+        </dataobject>
+        <dataobject javaType="fda.RootResponse" name="RootResponse" supportsQuickData="false">
+            <element name="results" typeRef="fda.resultsEntryItem" isList="true" allowNull="false"/>
+            <element name="meta" typeRef="fda.meta" isList="false" allowNull="false"/>
+        </dataobject>
+    </dataobjects>
+</service>

@@ -1,0 +1,117 @@
+<style id="systemvitalsfilter.css">
+.systems-vitals-filter {
+    padding: 8px;
+}
+</style>
+<script id="systemvitalsfilter.js">
+Application.$controller("systemvitalsfilterPageController", ["$scope",
+    function($scope) {
+        "use strict";
+
+    }
+]);
+</script>
+<script id="systemvitalsfilter.variables.json">
+var _systemvitalsfilterPage_Variables_ ={
+	"yearsList": {
+		"name": "yearsList",
+		"type": "string",
+		"isList": true,
+		"owner": "Page",
+		"dataSet": [
+			{
+				"name": "2013",
+				"dataValue": "2013"
+			},
+			{
+				"dataValue": "2014",
+				"name": "2014"
+			}
+		],
+		"dataBinding": {
+			"dataValue": "",
+			"name": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1408528450471"
+	},
+	"monthsList": {
+		"name": "monthsList",
+		"type": "entry",
+		"isList": true,
+		"owner": "Page",
+		"dataSet": [
+			{
+				"name": "January",
+				"dataValue": "01"
+			},
+			{
+				"name": "February",
+				"dataValue": "02"
+			},
+			{
+				"name": "March",
+				"dataValue": "03"
+			},
+			{
+				"name": "April",
+				"dataValue": "04"
+			},
+			{
+				"name": "May",
+				"dataValue": "05"
+			},
+			{
+				"name": "June",
+				"dataValue": "06"
+			},
+			{
+				"name": "July",
+				"dataValue": "07"
+			},
+			{
+				"name": "August",
+				"dataValue": "08"
+			},
+			{
+				"name": "September",
+				"dataValue": "09"
+			},
+			{
+				"name": "October",
+				"dataValue": "10"
+			},
+			{
+				"name": "November",
+				"dataValue": "10"
+			},
+			{
+				"name": "December",
+				"dataValue": "12"
+			}
+		],
+		"dataBinding": {
+			"dataValue": "",
+			"name": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1402643517670"
+	}
+}
+</script>
+<script id="systemvitalsfilter.html" type="text/ng-template">
+<wm-partial data-ng-controller="systemvitalsfilterPageController" name="partial1" class="dashboard-filter" type="left-panel"> 
+ <wm-composite widget="select" name="composite1" paddingtop="1" paddingunit="em"> 
+  <wm-label class="col-md-4" caption="Year" name="label1"></wm-label> 
+  <wm-select name="yearFilter" placeholder="Select Year" width="12em" dataset="bind:Variables.yearsList.dataSet" datafield="dataValue" displayfield="name" datavalue="2014"></wm-select> 
+ </wm-composite> 
+ <wm-composite widget="select" name="composite1"> 
+  <wm-label class="col-md-4" caption="Month" name="label1"></wm-label> 
+  <wm-select name="monthFilter" placeholder="Select Month" width="12em" dataset="bind:Variables.monthsList.dataSet" datafield="dataValue" displayfield="name" datavalue="07"></wm-select> 
+ </wm-composite> 
+ <wm-button name="button2" caption="Reset" iconname="remove-sign" on-click="clear()" class="btn-secondary"></wm-button> 
+ <wm-button name="button1" caption="Filter" iconname="filter" on-click="filter()" class="btn-primary"></wm-button> 
+</wm-partial>
+</script>

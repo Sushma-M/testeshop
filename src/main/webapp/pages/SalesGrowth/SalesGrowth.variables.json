@@ -1,0 +1,121 @@
+{
+	"leadsByChannels": {
+		"name": "leadsByChannels",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"channel": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 1000,
+		"designMaxResults": 10,
+		"operation": "leadsByChannel",
+		"service": "salesdb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"onBeforeUpdate": "Javascript",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404713228345"
+	},
+	"salesRevenueAndCount": {
+		"name": "salesRevenueAndCount",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"channel": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 5,
+		"designMaxResults": 10,
+		"operation": "salesRevenueAndCount",
+		"service": "salesdb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404969450359"
+	},
+	"leadsCount": {
+		"name": "leadsCount",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"channel": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 5,
+		"designMaxResults": 10,
+		"operation": "leadsCount",
+		"service": "salesdb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404969517123"
+	},
+	"repsCount": {
+		"name": "repsCount",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"channel": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 5,
+		"designMaxResults": 10,
+		"operation": "repsCount",
+		"service": "salesdb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404969534987"
+	},
+	"salesByReps": {
+		"name": "salesByReps",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 1000,
+		"designMaxResults": 10,
+		"operation": "salesByReps",
+		"service": "salesdb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404983464905"
+	}
+}

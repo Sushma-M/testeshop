@@ -1,0 +1,51 @@
+{
+    "group": "location",
+    "templateUrl": "/pages/Main/Main.html",
+    "controllerUrl": "/pages/Main/Main.js",
+    "variablesUrl": "/pages/Main/Main.variables.json",
+    "iconUrl": "/resources/images/imagelists/prefab-icon.png",
+    "resources": {
+        "styles": [
+            "/pages/Main/Main.css"
+        ],
+        "scripts": [
+            "https://maps.googleapis.com/maps/api/js?v=3.17&sensor=false&callback=onPrefabResourceLoad"
+        ],
+        "modules": [
+            {
+                "name": "uiGmapgoogle-maps",
+                "files": ["/resources/js/angular-google-maps.min.js"]
+            }
+        ]
+    },
+    "properties": {
+        "center": {
+            "bindable": "in-bound",
+            "type": "object",
+            "widget": "string"
+        },
+        "locations": {
+            "bindable": "in-bound",
+            "type": "object",
+            "widget": "string"
+        },
+        "location": {
+            "type": "list",
+            "value": "Root"
+        },
+        "icon": {
+            "type": "list"
+        },
+        "info": {
+            "type": "list"
+        },
+        "height": {
+            "type": "string",
+            "value": "400px"
+        },
+        "zoom": {
+            "type": "string",
+            "value": 5
+        }
+    }
+}

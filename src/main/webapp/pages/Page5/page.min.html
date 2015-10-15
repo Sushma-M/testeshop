@@ -1,0 +1,64 @@
+<style id="Page5.css">
+
+</style>
+<script id="Page5.js">
+Application.$controller("Page5PageController", ["$scope", function($scope) {
+    "use strict";
+
+    /* perform any action with the variables inside this block(on-page-load) */
+    $scope.onPageVariablesReady = function() {
+        /*
+         * variables can be accessed through '$scope.Variables' property here
+         * e.g. $scope.Variables.staticVariable1.getData()
+         */
+    };
+
+    /* perform any action with widgets inside this block */
+    $scope.onPageReady = function() {
+        /*
+         * widgets can be accessed through '$scope.Widgets' property here
+         * e.g. $scope.Widgets.byId(), $scope.Widgets.byName()or access widgets by $scope.Widgets.widgetName
+         */
+    };
+
+
+    $scope.text1Focus = function($event, $isolateScope) {
+
+        $scope.Widget.
+
+    };
+
+}]);
+</script>
+<script id="Page5.variables.json">
+var _Page5Page_Variables_ ={};
+</script>
+<script id="Page5.html" type="text/ng-template">
+<wm-page data-ng-controller="Page5PageController" name="page1">
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-tabs name="tabs1">
+                <wm-tabpane name="tabpane1">
+                    <wm-tabheader name="tabheader1"></wm-tabheader>
+                    <wm-tabcontent name="tabcontent1"></wm-tabcontent>
+                </wm-tabpane>
+                <wm-tabpane name="tabpane2">
+                    <wm-tabheader name="tabheader2"></wm-tabheader>
+                    <wm-tabcontent name="tabcontent2"></wm-tabcontent>
+                </wm-tabpane>
+                <wm-tabpane name="tabpane3">
+                    <wm-tabheader name="tabheader3"></wm-tabheader>
+                    <wm-tabcontent name="tabcontent3"></wm-tabcontent>
+                </wm-tabpane>
+            </wm-tabs>
+            <wm-menu caption="Menu" name="menu1"></wm-menu>
+            <wm-composite name="composite1">
+                <wm-label class="col-md-3" name="label1"></wm-label>
+                <wm-container class="col-md-9" name="container1">
+                    <wm-text name="text1" required="true" on-focus="text1Focus($event, $scope)"></wm-text>
+                </wm-container>
+            </wm-composite>
+        </wm-page-content>
+    </wm-content>
+</wm-page>
+</script>

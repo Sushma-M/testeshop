@@ -1,0 +1,273 @@
+<style id="SalesGrowth.css">
+.tile-panel {
+    background-color: rgb(239, 239, 239);
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 4px;
+    margin: 1em auto;
+    padding: 0.6em 0;
+    width: 72%;
+}
+.dashboard-filter {
+    padding: 8px !important;
+}
+</style>
+<script id="SalesGrowth.js">
+Application.$controller("SalesGrowthPageController", ["$scope",
+    function($scope) {
+        "use strict";
+
+        var applyFilter = false;
+
+        /* perform any action with the variables inside this block(on-page-load) */
+        $scope.onPageVariablesReady = function() {
+            /*
+             * variables can be accessed through '$scope.Variables' service here
+             * e.g. $scope.Variables.staticVariable1.getData()
+             */
+            if (applyFilter) {
+                /*initialize filter*/
+                $scope.filter();
+            } else {
+                applyFilter = true;
+            }
+        };
+
+        /* perform any action with widgets inside this block */
+        $scope.onPageReady = function() {
+            /*
+             * widgets can be accessed through '$scope.Widgets' service here
+             * e.g. $scope.Widgets.byId(), $scope.Widgets.byName()or access widgets by $scope.Widgets.widgetName
+             */
+            if (applyFilter) {
+                /*initialize filter*/
+                $scope.filter();
+            } else {
+                applyFilter = true;
+            }
+        };
+
+
+        $scope.leadsByChannelsonBeforeUpdate = function(variable, data) {
+            if (data.content.length === 0) {
+                return [{
+                    "Leads": 0,
+                    "Week": 0
+                }];
+            } else {
+                return data;
+            }
+        };
+
+        $scope.filter = function() {
+            var dataBinding = {
+                channel: $scope.Widgets.leftpanel.Widgets.channelFilter && +$scope.Widgets.leftpanel.Widgets.channelFilter.datavalue || 2
+            };
+
+            $scope.Variables.leadsCount.dataBinding = dataBinding;
+            $scope.Variables.repsCount.dataBinding = dataBinding;
+            $scope.Variables.salesRevenueAndCount.dataBinding = dataBinding;
+            $scope.Variables.salesByReps.dataBinding = dataBinding;
+            $scope.Variables.leadsByChannels.dataBinding = dataBinding;
+
+            $scope.Variables.leadsCount.update();
+            $scope.Variables.repsCount.update();
+            $scope.Variables.salesRevenueAndCount.update();
+            $scope.Variables.salesByReps.update();
+            $scope.Variables.leadsByChannels.update();
+        };
+
+        $scope.clear = function() {
+            $scope.Widgets.leftpanel.Widgets.channelFilter && ($scope.Widgets.leftpanel.Widgets.channelFilter._model_ = "2");
+            $scope.filter();
+        }
+
+    }
+]);
+
+Application.$controller("grid1Controller", ["$scope",
+    function($scope) {
+        "use strict";
+        $scope.ctrlScope = $scope;
+    }
+]);
+</script>
+<script id="SalesGrowth.variables.json">
+var _SalesGrowthPage_Variables_ ={
+	"leadsByChannels": {
+		"name": "leadsByChannels",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"channel": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 1000,
+		"designMaxResults": 10,
+		"operation": "leadsByChannel",
+		"service": "salesdb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"onBeforeUpdate": "Javascript",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404713228345"
+	},
+	"salesRevenueAndCount": {
+		"name": "salesRevenueAndCount",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"channel": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 5,
+		"designMaxResults": 10,
+		"operation": "salesRevenueAndCount",
+		"service": "salesdb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404969450359"
+	},
+	"leadsCount": {
+		"name": "leadsCount",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"channel": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 5,
+		"designMaxResults": 10,
+		"operation": "leadsCount",
+		"service": "salesdb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404969517123"
+	},
+	"repsCount": {
+		"name": "repsCount",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"channel": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 5,
+		"designMaxResults": 10,
+		"operation": "repsCount",
+		"service": "salesdb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404969534987"
+	},
+	"salesByReps": {
+		"name": "salesByReps",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 1000,
+		"designMaxResults": 10,
+		"operation": "salesByReps",
+		"service": "salesdb",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"serviceType": "DataService",
+		"category": "wm.ServiceVariable",
+		"_id": "wm-wm.ServiceVariable1404983464905"
+	}
+}
+</script>
+<script id="SalesGrowth.html" type="text/ng-template">
+<wm-page layouttype="two-column" columns="2" data-ng-controller="SalesGrowthPageController" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top-nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-row name="row1">
+            <wm-left-panel contentwidth="2" name="leftpanel" content="salesgrowthfilter"></wm-left-panel>
+            <wm-column class="app-content-column" columnwidth="12" name="column1">
+                <wm-layoutgrid rows="2" columns="3" name="layoutgrid1">
+                    <wm-gridrow name="gridrow2" height="auto" margintop="1" marginbottom="2" marginunit="em">
+                        <wm-gridcolumn name="gridcolumn2" columnwidth="3" horizontalalign="center">
+                            <wm-panel name="panel1" class="tile-panel">
+                                <wm-picture name="picture1" picturesource="resources/images/imagelists/thumbs_up.png"></wm-picture>
+                                <wm-label name="label1" width="100%" caption="Leads Generated" color="#F27221"></wm-label>
+                                <wm-label name="label2" width="100%" caption="bind:Variables.leadsCount.dataSet.content[0].LEADSCOUNT"></wm-label>
+                            </wm-panel>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn name="gridcolumn3" columnwidth="3" horizontalalign="center">
+                            <wm-panel name="panel2" class="tile-panel">
+                                <wm-picture name="picture1" picturesource="resources/images/imagelists/bill.png"></wm-picture>
+                                <wm-label name="label1" width="100%" caption="Quotes Generated" color="#F27221"></wm-label>
+                                <wm-label name="label2" width="100%" caption="bind:Variables.salesRevenueAndCount.dataSet.content[0].TOTALSALES"></wm-label>
+                            </wm-panel>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn name="gridcolumn4" columnwidth="3" horizontalalign="center">
+                            <wm-panel name="panel3" class="tile-panel">
+                                <wm-picture name="picture1" picturesource="resources/images/imagelists/graph.png"></wm-picture>
+                                <wm-label name="label1" width="100%" caption="Sales converted" color="#F27221"></wm-label>
+                                <wm-label name="label2" width="100%" caption="bind:(Variables.salesRevenueAndCount.dataSet.content[0].SALESREVENUE | currency:'$ ')"></wm-label>
+                            </wm-panel>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn name="gridcolumn5" columnwidth="3" horizontalalign="center">
+                            <wm-panel name="panel4" class="tile-panel">
+                                <wm-picture name="picture1" picturesource="resources/images/imagelists/trophy.png"></wm-picture>
+                                <wm-label name="label1" width="100%" caption="My Money Makers" color="#F27221"></wm-label>
+                                <wm-label name="label2" width="100%" caption="bind:Variables.repsCount.dataSet.content[0].REPSCOUNT"></wm-label>
+                            </wm-panel>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow3" height="auto">
+                        <wm-gridcolumn name="gridcolumn8" columnwidth="12">
+                            <wm-label name="label1" width="100%" caption="Lead Generation"></wm-label>
+                            <wm-chart type="Area" name="leadsByChannel" height="300" offsetbottom="40" offsetleft="50" offsettop="0" offsetright="20" yaxislabeldistance="40" dataset="bind:Variables.leadsByChannels.dataSet.content" xaxislabel="Week"
+                            xaxisdatakey="WEEK" yaxislabel="Leads" yaxisdatakey="LEADS" theme="Terrestrial"></wm-chart>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-label name="label1" width="100%" caption="Sales Representatives" margintop="2" marginunit="em"></wm-label>
+                <wm-grid name="grid1" scopedataset="Variables.salesByReps.dataSet.content" shownavigation="false" showrecordcount="false" height="360px" readonlygrid="false" insertrow="false" updaterow="false" deleterow="false">
+                    <wm-grid-column caption="value" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                </wm-grid>
+            </wm-column>
+        </wm-row>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+</wm-page>
+</script>

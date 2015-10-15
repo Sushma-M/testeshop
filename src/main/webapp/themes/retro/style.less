@@ -1,0 +1,417 @@
+/*START - Retro Theme*/
+
+.wm-app {
+
+  @import url("../../../components/bootstrap/less/bootstrap.less");
+  @import url("variables.less");
+
+  /*@import "less/bootstrap.less";*/
+
+  font-size: @font-size-base;
+  color: @text-color;
+  font-family: @font-family-base;
+
+  //Variables
+  @wm-brand-default: #46555c;
+
+  @panel-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
+  @wm-panel-title-font-size: 1.4em;
+  @wm-panel-action-color: lighten(@text-color, 30%);
+  @wm-panel-action-font-size: .75em;
+
+  @wm-body-bg: #f5fcfb;
+
+  //header
+  @wm-header-bg: @brand-primary;
+  @wm-header-color: #fff;
+
+  //side panels
+  @wm-panels-border-color: #CFDBE2;
+
+  @wm-left-panel-btn-color: #515253;
+  @wm-left-panel-bg: #fff;
+  @wm-left-panel-list-border: 1px #f5f5f5 solid;
+
+  @wm-right-panel-bg: #FFFFFF;
+  @wm-right-panel-btn-color: #515253;
+  @wm-right-panel-list-border: 1px #f5f5f5 solid;
+
+  //tabs
+  @wm-tab-border: #f0f0f0;
+
+  @wm-tab-color-normal: @text-color;
+  @wm-tab-bg-normal: #edf0f2;
+
+  @wm-tab-color-hover: @text-color;
+  @wm-tab-bg-hover: #fff;
+
+  @wm-tab-color-active: @text-color;
+  @wm-tab-bg-active: #fff;
+
+  //breadcrumb
+  @breadcrumb-color : #78A38F;
+  @breadcrumb-color-active: #777;
+
+  //Label
+  label {
+    font-weight: normal;
+  }
+
+  //Panels
+  .panel {
+    border: 1px solid #f0f0f0;
+    box-shadow: @panel-box-shadow;
+    border-radius: @border-radius-base;
+    .panel-heading {
+      border-radius: @border-radius-base @border-radius-base 0 0;
+      .heading {
+        margin: 0;
+      }
+
+      .panel-actions {
+        .app-menu .app-button, .panel-action {
+          color: @wm-panel-action-color;
+          font-size: @wm-panel-action-font-size;
+          padding: 1em;
+        }
+      }
+      .panel-title {
+        font-size: @wm-panel-title-font-size;
+        font-weight: 300;
+        .panel-action {
+          color: @wm-panel-action-color;
+          font-size: @wm-panel-action-font-size;
+          padding: 1em;
+        }
+        .panel-icon {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    &.panel-primary, &.panel-success, &.panel-info, &.panel-warning, &.panel-danger {
+      .panel-heading {
+        .app-menu .app-button, .panel-action {
+          color: #fff;
+        }
+      }
+    }
+
+  }
+
+  //Tabs
+  .nav-tabs {
+    border-bottom-color: @wm-tab-border;
+    > li {
+      > a {
+        color: @wm-tab-color-normal;
+        background-color: @wm-tab-bg-normal;
+        border-bottom-color: @wm-tab-border;
+        border-radius: @border-radius-base;
+        box-shadow: none;
+
+        &:hover, &:focus {
+          border-color: #54abd9 #54abd9 transparent;
+          color: @wm-tab-color-hover;
+          background-color: @wm-tab-bg-hover;
+        }
+
+        .app-icon {
+          background-size: 100%;
+          margin-right: 5px;
+          top: 2px;
+        }
+      }
+      &.active {
+        > a {
+          border-color: @wm-tab-border;
+          border-bottom-color: transparent;
+          color: @wm-tab-color-active;
+          background-color: @wm-tab-bg-active;
+          &:hover {
+            border-color: @wm-tab-border;
+            border-bottom-color: transparent;
+            color: @wm-tab-color-active;
+            background-color: @wm-tab-bg-active;
+          }
+        }
+      }
+
+    }
+  }
+
+  //Tab Content
+  .tab-content {
+    .tab-body {
+      border-color: @wm-tab-border;
+      padding: 1.25em 1.6em;
+    }
+  }
+
+  //Tile
+  .app-tile {
+    border-color: #f0f0f0;
+    border-radius: @border-radius-base;
+    margin-bottom: 0;
+
+    &.panel-primary, &.panel-success, &.panel-info, &.panel-warning {
+      .panel-body {
+        color: #fff;
+        border-top: 0;
+      }
+    }
+
+    &.panel-primary {
+      .panel-body {
+        background-color: @brand-primary;
+      }
+    }
+
+    &.panel-success {
+      .panel-body {
+        background-color: @brand-success;
+      }
+    }
+
+    &.panel-info {
+      .panel-body {
+        background-color: @brand-info;
+      }
+    }
+
+    &.panel-warning {
+      .panel-body {
+        background-color: @brand-warning;
+      }
+    }
+
+    &.panel-danger {
+      .panel-body {
+        background-color: @brand-danger;
+      }
+    }
+
+  }
+
+  .list-group-item-separator {
+    margin-bottom: 0.16em;
+    border-radius: 0.16em;
+    .form-group {
+      padding: 0 1em;
+    }
+  }
+
+  .table {
+    > thead > tr {
+      font-size: 1.05em;
+      border-bottom: 2px solid #ccc;
+      background: @brand-primary;
+      color: #fff;
+      th {
+        padding: 12px 8px;
+      }
+    }
+    > tbody > tr {
+      td {
+        font-size: 1em;
+        padding: 10px 8px;
+      }
+    }
+    > tbody > tr.active {
+      td, th {
+        color: @brand-primary;
+      }
+    }
+  }
+
+  .form-control {
+    box-shadow: none;
+    &:active {
+      border-color: @brand-info;
+    }
+  }
+  .btn {
+    border-radius: 2px;
+  }
+
+  .app-calendar, .date-wrapper {
+    table {
+      width: 100%;
+      .btn-default {
+        border-radius: 0;
+        border-color: transparent;
+        background: #fff;
+        color: @text-color;
+        &.active {
+          color: @text-color;
+          background-color: lighten(@brand-primary, 20%);
+          border-color: lighten(@brand-primary, 10%);
+          box-shadow: none;
+          .text-info {
+            color: @text-color;
+          }
+        }
+        &:hover {
+          color: @text-color;
+          background-color: lighten(@brand-primary, 20%);
+          border-color: lighten(@brand-primary, 10%);
+
+        }
+
+        &.pull-left, &.pull-right {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .app-calendar {
+    .well {
+      color: @brand-info;
+      padding: 0.4em;
+    }
+  }
+
+  .progress {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .breadcrumb {
+    background-color: #c5d7cf;
+    li {
+      a {
+        color: @breadcrumb-color;
+      }
+      &.active {
+        color: @breadcrumb-color-active;
+      }
+    }
+  }
+
+  .btn-group {
+    .btn.active {
+      box-shadow: none;
+      background-color: #fff;
+      border-color: @brand-primary;
+      color: @text-color;
+    }
+  }
+  .app-grid .table thead th .sort-buttons-container .sort-button .sort-icon {
+    border-color: #fff transparent;
+  }
+
+  /*Modal*/
+  .modal-header {
+    color: #2b3f36;
+    font-weight: bold;
+    background-color: #dde8e3;
+  }
+
+  /*Layout**************************************************************************/
+  .app-content-column {
+    background-color: @wm-body-bg;
+  }
+
+  //Header
+  .app-header {
+    background-color: @wm-header-bg;
+    color: @wm-header-color;
+    .app-mobile-header a {
+      color: #e9e9e9;
+    }
+
+    .nav {
+      > li {
+        > a {
+          color: #FFFFFF;
+
+          &:hover {
+            color: #78A38F;
+            background-color: #F0F0F0;
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+  }
+
+  //Top Nav Bar
+  .app-navbar {
+    border-radius: 0;
+    border-bottom-color: #ccc;
+
+    //Mobile Specific button
+    .navbar-toggle {
+      margin-right: 1.2em;
+      color: #ffffff;
+
+      &:hover, &:focus {
+        color: @wm-brand-default;
+        background-color: #ffffff;
+      }
+    }
+
+    &.navbar-default {
+      border-width: 0px 0px 1px 0px;
+      .navbar-nav > li > a {
+        color: @wm-brand-default;
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+      .navbar-nav > li > a.active {
+        color: @wm-brand-default;
+        background: #f0f0f0;
+      }
+    }
+  }
+
+  //Left & Right Panels
+  .app-left-panel, .app-right-panel {
+    .nav {
+      > li {
+        border-bottom: @wm-left-panel-list-border;
+        margin-top: 0;
+        > a, > .btn {
+          color: @wm-left-panel-btn-color;
+          border-left: 0.5em solid transparent;
+          letter-spacing: .025em;
+          font-weight: 400;
+          padding: 1em;
+          position: relative;
+          border-radius: 0;
+          .glyphicon {
+            margin-right: 0.25em;
+          }
+          &:hover {
+            color: @wm-brand-default;
+            text-decoration: none;
+            background-color: #f0f0f0;
+          }
+          &.active {
+            background-color: #f0f0f0;
+            border-left-color: @brand-primary;
+            color: @wm-brand-default;
+          }
+        }
+      }
+    }
+  }
+
+  //Left Panel
+  .app-left-panel {
+    background-color: @wm-left-panel-bg;
+    border-right: 1px solid @wm-panels-border-color;
+  }
+
+  .app-right-panel {
+    background-color: @wm-right-panel-bg;
+    border-left: 1px solid @wm-panels-border-color;
+  }
+
+  //Footer
+  .app-footer {
+    padding: 1em 1.5em;
+    background-color: #F5F7FA;
+  }
+}

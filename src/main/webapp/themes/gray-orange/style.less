@@ -1,0 +1,387 @@
+/*START - Glowy Gray Theme*/
+@wm-image-base-url: "../images";
+
+@import url("../../../../app/styles/studio/wm-mixins.less");
+@import url("//fonts.googleapis.com/css?family=Lato:300,400,700");
+
+.wm-app {
+  /*For App body*/
+  @app-body-font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  @app-body-font-size: 15px;
+  @app-body-line-height: 1.42857143;
+  @app-body-color: #ebebeb;
+  @app-body-background-color: #FFF;
+
+  /*For App Widgets*/
+  @app-label-text-color: #333;
+  @app-border-color: #0088BA;
+  @app-link-color: #0088BA;
+  @app-standard-padding: 8px;
+  @app-standard-margin: 8px;
+  @app-name-text-color: #F27221;
+
+  @app-button-text-color: #FFFFFF;
+  @app-button-box-shadow-color: #666666;
+  @app-button-bg-color: #C77845;
+  @app-button-bg-gradient-start-color: #F27221;
+  @app-button-bg-gradient-end-color: #a34509;
+  @app-sec-button-text-color: #666;
+  @app-sec-button-bg-color: #eee;
+  @app-sec-button-border-color: #fff;
+  @app-sec-button-bg-gradient-start-color: #fff;
+  @app-sec-button-bg-gradient-end-color: #eee;
+  @app-button-border-color: #C77845;
+
+  @app-input-bg-color: #FFFFFF;
+  @app-input-border-color: #999;
+
+  /*Grid*/
+  @app-grid-header-bg-color: #53B6F3;
+  @app-grid-header-text-color: #FFF;
+  @app-grid-footer-bg-color: #F0F6F8;
+  @app-grid-border-color: #A1E4FC;
+  @app-grid-footer-text-color: #0c4d72;
+  @app-grid-even-row-bg-color: #FFFFFF;
+  @app-grid-odd-row-bg-color: #F4F4F4;
+
+  /*File Upload Widget*/
+  @app-fileupload-dropbox-bg-color: #e0f6ff;
+  @app-fileupload-dropbox-border-color: #0088BA;
+  @app-fileupload-text-color: #00435b;
+  @app-fileupload-file-message-color: #005270;
+
+  /*Dialog Widget*/
+  @wm-dialog-header-text-color: #0c4d72;
+  @wm-dialog-header-text-shadow-color: #95d1f3;
+  @wm-dialog-header-background-color: #cbeffe;
+  @wm-dialog-header-bg-gradient-start-color: #cbeffe;
+  @wm-dialog-header-bg-gradient-end-color: #4ec7fc;
+  @wm-dialog-footer-background-color: #F0F6F8;
+  @wm-dialog-close-button-bg-color: #62D7FF;
+  @wm-dialog-close-button-border-color: #0088BA;
+
+  /*Accordion Widget*/
+  @app-accordion-panel-heading-bg-color: #cbeffe;
+  @app-accordion-bg-gradient-start-color: #cbeffe;
+  @app-accordion-bg-gradient-end-color: #cbeffe;
+  @app-accordion-panel-heading-border-color: #A1E4FC;
+  @app-accordion-panel-collapse-bg-color: #fff;
+  @app-accordion-panel-collapse-border-color: #A1E4FC;
+  @app-accordion-panel-title-heading-color: #006FA1;
+  @app-accordion-heading-text-shadow-color: #ffffff;
+
+  /*Tabs Widget*/
+  @app-tabs-link-color: #FFFFFF;
+  @app-tabs-link-bg-color: #1d9ce5;
+  @app-tabs-bg-gradient-start-color: #6ECEFF;
+  @app-tabs-bg-gradient-end-color: #1d9ce5;
+  @app-tabs-active-link-border-color: #A1E4FC;
+  @app-tabs-active-link-bg-color: #FFFFFF;
+  @app-tabs-active-link-color: #006FA1;
+  @app-tabs-tab-body-border-color: #A1E4FC;
+  @app-tabs-tab-body-bg-color: #FFFFFF;
+
+  /*For App Header, Body & Footer colors*/
+  @wm-app-header-background-color: #f1f1f1;
+  @wm-app-header-bg-gradient-start-color: #f1f1f1;
+  @wm-app-header-bg-gradient-end-color: #f1f1f1;
+  @wm-app-header-text-color: #000;
+  @wm-app-header-border-color: #F1F1F1;
+
+  @wm-app-content-background-color: #FFFFFF;
+  @wm-app-content-text-color: #666666;
+
+  /*For top nav*/
+  @wm-app-topnav-background-color: #F27221;
+  @app-top-nav-link-color: #FFF;
+  @app-top-nav-link-hover-color: #fff;
+  @app-top-nav-link-hover-bg-start-color: #1E61B2;
+  @app-top-nav-link-hover-bg-end-color: #37b1f0;
+  @wm-app-topnav-bottom-border-color: #3ea5d5;
+
+  /*For footer */
+  @wm-app-footer-background-color: #2b3e50;
+  @wm-app-footer-text-color: #059DC6;
+
+  /*For left nav*/
+  @app-left-panel-bg-color: #f1f1f1;
+  @app-left-panel-link-border-bottom-color: #b7bbc6;
+  @app-left-panel-link-color: #505865;
+  @app-left-panel-link-hover-color: #fff;
+  @app-left-panel-link-hover-bg-color: #005071;
+
+  /*For right nav*/
+  @app-right-panel-bg-color: #f5f4f1;
+  @app-right-panel-list-bg-color: #e4e3e2;
+  @app-right-panel-link-color: #505865;
+  @app-right-panel-link-hover-color: #fff;
+  @app-right-panel-link-hover-bg-color: #ACB5B9;
+
+  font-family: @app-body-font-family;
+  font-size: @app-body-font-size;
+  line-height: @app-body-line-height;
+  color: @app-body-color;
+  background-color: @app-body-background-color;
+
+  a, .pagination > li > a, .pagination > li > span {
+    color: @app-link-color;
+  }
+
+  .app-label, .app-anchor {
+    color: @app-label-text-color;
+  }
+
+  .app-button, .btn.btn-default {
+    color: @app-button-text-color;
+    .border-radius(4px);
+    .box-shadow(0px, 1px, 1px, @app-button-box-shadow-color);
+    background-color: @app-button-bg-color;
+    .background-gradient(@app-button-bg-gradient-start-color, 0.05, @app-button-bg-gradient-end-color, 1);
+    .border(@app-button-border-color);
+
+    &:hover {
+      .background-gradient(darken(@app-button-bg-gradient-start-color, 10%), 0.05, darken(@app-button-bg-gradient-end-color, 10%), 1);
+    }
+  }
+  .app-button.btn-secondary {
+    color: @app-sec-button-text-color;
+    background-color: @app-sec-button-bg-color;
+    .background-gradient(@app-sec-button-bg-gradient-start-color, 0.05, @app-sec-button-bg-gradient-end-color, 1);
+    .border(@app-sec-button-border-color);
+
+    &:hover {
+      .background-gradient(darken(@app-sec-button-bg-gradient-start-color, 10%), 0.05, darken(@app-sec-button-bg-gradient-end-color, 10%), 1);
+    }
+  }
+
+  .app-textbox, .app-textarea, .app-select, .input-group-addon {
+    background-color: @app-input-bg-color;
+    .box-shadow(0, 0, 0, transparent);
+  }
+
+  /*Grid styling*/
+  .gridStyle {
+    border: 1px solid @app-grid-border-color;
+  }
+
+  .ngTopPanel {
+    background-color: lighten(@app-border-color, 10%);
+    border-bottom: 1px solid @app-border-color;
+    color: darken(@app-border-color, 20%);
+    text-transform: capitalize;
+  }
+
+  .ngRow {
+    &.even {
+      background-color: @app-grid-even-row-bg-color;
+    }
+    &.odd {
+      background-color: @app-grid-odd-row-bg-color;
+    }
+  }
+
+  .ngHeaderContainer {
+    background-color: @app-grid-header-bg-color;
+    color: @app-grid-header-text-color;
+  }
+
+  /*Upload Widget*/
+  .app-fileupload .drop-box {
+    background-color: @app-fileupload-dropbox-bg-color;
+    border: 2px dashed  @app-fileupload-dropbox-border-color;
+  }
+
+  .app-fileupload [data-identifier=drop-message] {
+    color: @app-fileupload-text-color;
+  }
+
+  .app-fileupload [data-identifier=file-message] {
+    color: @app-fileupload-file-message-color;
+  }
+
+  .app-fileupload [data-identifier="file-message"] a {
+    color: @app-fileupload-text-color;
+  }
+
+  /*Dialog Widget*/
+  .app-dialog-header {
+    background-color: @wm-dialog-header-background-color;
+    .background-gradient(@wm-dialog-header-bg-gradient-start-color, 0.05, @wm-dialog-header-bg-gradient-end-color, 1);
+    color: @wm-dialog-header-text-color;
+    .text-shadow(0, 1px, @wm-dialog-header-text-shadow-color);
+
+    .app-dialog-close {
+      background-color: @wm-dialog-close-button-bg-color;
+      .border(@wm-dialog-close-button-border-color);
+    }
+  }
+
+  .app-dialog-footer {
+    background-color: @wm-dialog-footer-background-color;
+  }
+  .app-search, .app-currency {
+    .input-group-addon {
+      .background-gradient(@app-tabs-bg-gradient-start-color, 1, @app-tabs-bg-gradient-end-color, 1);
+      color: @app-tabs-link-color;
+    }
+  }
+  /*Accordion Widget*/
+  .app-accordion {
+    .app-accordion-panel {
+      .panel-heading {
+        background-color: @app-accordion-panel-heading-bg-color;
+        .background-gradient(@app-accordion-bg-gradient-start-color, 1, @app-accordion-bg-gradient-end-color, 1);
+        border: 1px solid @app-accordion-panel-heading-border-color;
+      }
+
+      .panel-collapse {
+        background-color: @app-accordion-panel-collapse-bg-color;
+        border: 1px solid @app-accordion-panel-collapse-border-color;
+      }
+
+      .panel-title {
+        .heading {
+          color: @app-accordion-panel-title-heading-color;
+        }
+      }
+
+      .accordion-heading {
+        font-weight: bold;
+        text-shadow: 0px 1px @app-accordion-heading-text-shadow-color;
+      }
+    }
+  }
+
+  /*Tabs Widget*/
+  .app-tabs.tabbable {
+
+    .nav-tabs {
+      border-bottom: 1px solid @app-tabs-tab-body-border-color;
+    }
+
+    .nav > li > a {
+      color: @app-tabs-link-color;
+      background-color: @app-tabs-link-bg-color;
+      .background-gradient(@app-tabs-bg-gradient-start-color, 0.05, @app-tabs-bg-gradient-end-color, 1);
+
+      &:hover, &:focus {
+        border-color: transparent;
+      }
+    }
+
+    .nav > li.active {
+      > a {
+        border: 1px solid @app-tabs-active-link-border-color;
+        background-color: @app-tabs-active-link-bg-color;
+        .remove-background();
+        color: @app-tabs-active-link-color;
+        border-bottom-color: transparent;
+      }
+    }
+
+    .tab-content {
+      .tab-pane {
+        .tab-body {
+          border: 1px solid @app-tabs-tab-body-border-color;
+          border-top: 0;
+          background-color: @app-tabs-tab-body-bg-color;
+        }
+      }
+    }
+  }
+
+  /*App Header, Body & Footer*/
+  .app-header {
+    background-color: @wm-app-header-background-color;
+    .background-gradient(@wm-app-header-bg-gradient-start-color, 0.05, @wm-app-header-bg-gradient-end-color, 1);
+    color: @wm-app-header-text-color;
+    box-shadow: none;
+    border-bottom: 1px solid @wm-app-header-border-color;
+    .application-name {
+      color: @app-name-text-color;
+    }
+  }
+
+  .app-content {
+    color: @wm-app-content-text-color;
+  }
+  .app-footer {
+    background-color: @wm-app-footer-background-color;
+    color: @wm-app-footer-text-color;
+  }
+
+  .navbar {
+    background-color: @wm-app-topnav-background-color;
+    color: @wm-app-footer-text-color;
+    padding: 0 @app-standard-padding;
+    .inset-shadow(0px, 2px, 6px, 1px, rgba(22, 25, 28, 0.3));
+    border: none;
+    .navbar-nav > li > a {
+    color: @app-top-nav-link-color;
+      &:hover, &.active {
+        .background-gradient(@app-top-nav-link-hover-bg-start-color, 0.05, @app-top-nav-link-hover-bg-end-color, 1);
+        color: @app-top-nav-link-hover-color;
+      }
+    }
+  }
+
+  .app-left-panel {
+    background-color: @app-left-panel-bg-color;
+    .nav {
+      li {
+        list-style: none;
+        border-bottom: 1px solid @app-left-panel-link-border-bottom-color;
+        &:hover, &.active {
+          background-color: @app-left-panel-link-hover-bg-color;
+        &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            margin-top: -6px;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-right: 10px solid white;
+          }
+          a, .btn {
+          color: @app-left-panel-link-hover-color;
+          }
+        }
+        a, .btn {
+          color: @app-left-panel-link-color;
+          border: none;
+        }
+      }
+    }
+  }
+
+  .app-right-panel {
+    .nav {
+      background-color: @app-right-panel-list-bg-color;
+      li {
+        a, .btn {
+          color: @app-right-panel-link-color;
+          background: @app-right-panel-bg-color;
+
+          &:hover, &.active {
+            color: @app-right-panel-link-hover-color;
+            background-color: @app-right-panel-link-hover-bg-color;
+
+            &:after {
+              content: '';
+              position: absolute;
+              top: 50%;
+              left: -1px;
+              margin-top: -6px;
+              width: 0;
+              height: 0;
+              border: 6px solid transparent;
+              border-left: 10px solid white;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,311 @@
+/*START - Cool Blue Theme*/
+
+.wm-app {
+  @import url("../../../components/bootstrap/less/bootstrap.less");
+  @import url("variables.less");
+  font-size: @font-size-base;
+  color: @text-color;
+  font-family: @font-family-base;
+  background-color: #F5F7FA;
+
+  /*******override the bootstrap styles since the style properties doesn't exist****/
+  //Variables
+  @app-border-color: #F1F5FC;
+  @app-tabs-border-color: #CFDBE2;
+
+  //Label
+  label {
+    font-weight: normal;
+  }
+
+  //Panels
+  .panel {
+    .panel-heading {
+      background-color: #C8EDF8;
+      border-color: transparent;
+      color: #106c88;
+
+      .heading {
+        margin: 0;
+      }
+
+      .panel-actions {
+        .app-menu .app-button,.panel-action {
+          color: #106c88;
+          font-size: 1em;
+        }
+      }
+    }
+    .panel-title {
+      font-weight: normal;
+      font-size: 1.2em;
+    }
+  }
+
+
+  .panel-default {
+    border-top-width: 1px;
+    border-radius: .33em;
+  }
+
+  //Tabs
+  .nav-tabs {
+    border-bottom-color: @app-tabs-border-color;
+    > li {
+      &.active {
+        > a, > a:hover, > a:focus {
+          border-color: @app-tabs-border-color;
+          border-bottom-color: transparent;
+          box-shadow: none;
+          font-weight: bold;
+        }
+      }
+      > a:hover, > a:focus {
+        border-color: @app-border-color;
+        box-shadow: 0 1px 1px #aaa inset;
+      }
+    }
+  }
+
+  //Tab Content
+  .tab-content {
+    .tab-body {
+      border-color: @app-tabs-border-color;
+      padding: 1.25em 1.6em;
+    }
+  }
+
+  //Tile
+  .app-tile.panel {
+    border: 0;
+    border-radius: .33em;
+    margin-bottom: 0;
+
+    &.panel-success {
+      .panel-body {
+        background-color: #37BC9B;
+        color: #ffffff;
+      }
+    }
+
+    &.panel-info {
+      .panel-body {
+        background-color: #5D9CEC;
+        color: #ffffff;
+      }
+    }
+
+    &.panel-warning {
+      .panel-body {
+        background-color: #7266BA;
+        color: #ffffff;
+      }
+    }
+
+    .panel-body {
+      border-top: 0;
+    }
+  }
+
+  .list-group-item-separator {
+    margin-bottom: 0.16em;
+    border-radius: 0.16em;
+    .form-group {
+      padding: 0 1em;
+    }
+  }
+
+  //Dropdown
+  .dropdown-menu {
+    margin-top: 0;
+    border: 1px solid #E1E1E1;
+    -webkit-box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.175);
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.175);
+    > li {
+      > a {
+        padding: 0.25em 1.66;
+        &:hover, &:focus {
+          text-decoration: none;
+          color: #2F3342;
+          background-color: #C8EDF8;
+        }
+      }
+    }
+  }
+
+  //Navigation
+  .nav {
+    > li {
+      > a {
+        &:hover, &:focus {
+          color: #117391;
+          background-color: #c8edf8;
+        }
+      }
+    }
+  }
+
+  /*Modal*/
+  .modal-header {
+    color: #0e5d76;
+    font-weight: bold;
+    background-color: #91dbf2;
+    border-bottom-color: #6dcfed;
+  }
+
+  .modal-footer {
+    border-top-color: #bfeaf7;
+  }
+
+  //Breadcrumbs
+  .breadcrumb {
+    background-color: #f5fcfd;
+    box-shadow: 0 0 2px rgba(35,183,229,1);
+
+    > .active {
+      font-weight: bold;
+    }
+
+    > li + li:before {
+      color: #333;
+      font-weight: bold;
+    }
+  }
+
+  //Calendar, Date and DateTime Widgets common styles
+  .app-calendar, .app-date, .app-datetime {
+    .dropdown-menu {
+      .btn-default {
+        border-radius: 0;
+        border-color: transparent;
+
+        &.active {
+          color: #ffffff;
+          background-color: #23B7E5;
+
+          &:hover {
+            color: #ffffff;
+            background-color: #23B7E5;
+          }
+
+          .text-info {
+            color: #FFFFFF;
+          }
+        }
+      }
+
+      .glyphicon-chevron-left, .glyphicon-chevron-right {
+        color: #337ab7;
+      }
+    }
+  }
+
+  .app-calendar {
+    .fc-icon-left-single-arrow, .fc-icon-right-single-arrow {
+      color: #337ab7;
+    }
+  }
+
+  /*Layout**************************************************************************/
+  .app-content-column {
+    background-color: #F3F3F4;
+  }
+
+  //Header
+  .app-header {
+    background-color: #ffffff;
+    color: #2B333C;
+    box-shadow: 0 0 .5em #BAAEAE;
+    .app-mobile-header a {
+      color: #23B7E5;
+    }
+  }
+
+  //Top Nav Bar
+  .app-navbar {
+    border-radius: 0;
+
+    a {
+      color: @navbar-default-link-color;
+      background-color: transparent;
+
+      &:hover, &:focus {
+        color: @navbar-default-link-hover-color;
+        text-decoration: none;
+      }
+    }
+
+    //Mobile Specific button
+    .navbar-toggle {
+      margin-right: 1.2em;
+      color: #ffffff;
+
+      &:hover, &:focus {
+        color: #23B7E5;
+        background-color: #ffffff;
+      }
+    }
+  }
+
+  //Left & Right Panels
+  .app-left-panel, .app-right-panel {
+    .nav {
+      > li {
+        margin-top: 0;
+        border-bottom: 1px #f5f5f5 solid;
+        > a, > .btn {
+          color: #515253;
+          letter-spacing: .025em;
+          font-weight: 400;
+          padding: 1em;
+          position: relative;
+          border-radius: 0;
+          border-left: 0.33em solid transparent;
+
+          &:hover {
+            background-color: transparent;
+            text-decoration: none;
+            color: #23B7E5;
+          }
+
+          &.active {
+            background-color: transparent;
+            border-left: 4px solid #23B7E5;
+          }
+
+          .glyphicon {
+            margin-right: 0.25em;
+          }
+        }
+      }
+    }
+  }
+
+  //Left Panel
+  .app-left-panel {
+    background-color: #FFFFFF;
+    border-right: 1px solid #CFDBE2;
+
+    .nav {
+      > li {
+        > a, > .btn {
+          border-left: 0.33em solid transparent;
+          &.active {
+            border-left-color: #23B7E5;
+          }
+        }
+      }
+    }
+  }
+
+  //Right Panel
+  .app-right-panel {
+    background-color: #e7e7e9;
+  }
+
+  //Footer
+  .app-footer {
+    padding: 1em 1.5em;
+    background-color: #F5F7FA;
+  }
+}

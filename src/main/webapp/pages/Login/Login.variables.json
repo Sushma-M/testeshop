@@ -13,6 +13,8 @@
 		"saveInPhonegap": false,
 		"startUpdate": false,
 		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"onError": "Javascript",
 		"useDefaultSuccessHandler": true,
 		"category": "wm.LoginVariable",
 		"_id": "wm-wm.LoginVariable1398237232072"

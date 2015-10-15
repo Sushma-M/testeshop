@@ -1,0 +1,165 @@
+{
+	"userName": {
+		"name": "userName",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"dataValue": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1400221896913"
+	},
+	"password": {
+		"name": "password",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"dataValue": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1400221920158"
+	},
+	"clientid": {
+		"name": "clientid",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"dataValue": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1400221941194"
+	},
+	"clientsecret": {
+		"name": "clientsecret",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"dataValue": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1400221961508"
+	},
+	"query": {
+		"name": "query",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"dataValue": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1400223418538"
+	},
+	"accessToken": {
+		"name": "accessToken",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"dataValue": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1400224317211"
+	},
+	"endPointUrl": {
+		"name": "endPointUrl",
+		"type": "string",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"dataValue": ""
+		},
+		"saveInPhonegap": false,
+		"category": "wm.Variable",
+		"_id": "wm-wm.Variable1400224336024"
+	},
+	"SalesForceAPIExecuteQuery": {
+		"type": "map",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"username": "bind:username",
+			"password": "bind:password",
+			"clientId": "bind:clientid",
+			"clientSecret": "bind:clientsecret",
+			"query": "bind:query"
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 20,
+		"designMaxResults": 10,
+		"service": "SalesForceAPI",
+		"operation": "executeQuery",
+		"operationType": null,
+		"startUpdate": true,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"serviceType": "JavaService",
+		"category": "wm.ServiceVariable",
+		"isDefault": true,
+		"wmServiceOperationInfo": {
+			"httpMethod": "POST",
+			"name": "executeQuery",
+			"parameters": [
+				{
+					"name": "username",
+					"parameterType": "QUERY"
+				},
+				{
+					"name": "password",
+					"parameterType": "QUERY"
+				},
+				{
+					"name": "clientId",
+					"parameterType": "QUERY"
+				},
+				{
+					"name": "clientSecret",
+					"parameterType": "QUERY"
+				},
+				{
+					"name": "query",
+					"parameterType": "QUERY"
+				}
+			],
+			"relativePath": "/salesForceAPI/executeQuery"
+		},
+		"_id": "wm-wm.ServiceVariable1426089785417",
+		"name": "SalesForceAPIExecuteQuery"
+	}
+}

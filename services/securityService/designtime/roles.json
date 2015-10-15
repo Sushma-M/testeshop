@@ -1,1 +1,1 @@
-[{"name":"admin","description":null,"roleConfig":{"landingPage":null}},{"name":"user","description":null,"roleConfig":{"landingPage":null}}]
+[{"name":"admin","description":null,"roleConfig":{"landingPage":"Main"}},{"name":"user","description":null,"roleConfig":{"landingPage":"Main"}},{"name":"SalesManager","description":null,"roleConfig":{"landingPage":"Main"}}]

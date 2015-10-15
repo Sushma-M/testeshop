@@ -1,0 +1,53 @@
+<wm-page layouttype="one-column" columns="1" data-ng-controller="PagePageController" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top-nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-row name="row1">
+            <wm-column class="app-content-column" columnwidth="12" name="column1">
+                <wm-livegrid name="livegrid1" service="salesdb@Channels">
+                    <wm-grid deleterow="true" updaterow="true" insertrow="true" gridfirstrowselect="true" name="grid1" dataset="bind:Variables.SalesdbChannelsData.dataSet" readonlygrid="false">
+                        <wm-grid-column binding="id" caption="id" type="integer" primary-key="true" generator="identity" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                        <wm-grid-column binding="name" caption="name" type="string" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                        <wm-grid-action key="addNewRow" label="New" value="new" icon="new" show="true" class="btn-primary" action="addNewRow()"></wm-grid-action>
+                    </wm-grid>
+                    <wm-liveform novalidate="false" height="200" name="liveform1" dataset="bind:Variables.SalesdbChannelsData.dataSet" formtype="inline">
+                        <wm-form-field display-name="id" show="true" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true"></wm-form-field>
+                        <wm-form-field display-name="name" show="true" primary-key="false" generator="null" key="name" type="string" maxvalue="40" readonly="false" required="true"></wm-form-field>
+                        <wm-form-action key="save" class="form-save btn-success" iconname="save" display-name="save" show="true" type="submit" update-mode="true"></wm-form-action>
+                        <wm-form-action key="cancel" class="form-cancel" iconname="cancel" action="formCancel()" display-name="cancel" show="true" type="button" update-mode="true"></wm-form-action>
+                    </wm-liveform>
+                </wm-livegrid>
+                <wm-livegrid name="livegrid3" service="salesdb@Reps">
+                    <wm-grid deleterow="true" updaterow="true" insertrow="true" gridfirstrowselect="true" name="grid3" dataset="bind:Variables.SalesdbRepsData.dataSet">
+                        <wm-grid-column binding="id" caption="id" type="integer" primary-key="true" generator="identity" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                        <wm-grid-column binding="name" caption="name" type="string" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                        <wm-grid-column binding="street" caption="street" type="string" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                        <wm-grid-column binding="city" caption="city" type="string" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                        <wm-grid-column binding="state" caption="state" type="string" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                        <wm-grid-column binding="zip" caption="zip" type="string" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                        <wm-grid-column binding="picurl" caption="picurl" type="string" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                        <wm-grid-column binding="password" caption="password" type="string" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                        <wm-grid-column binding="role" caption="role" type="string" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                        <wm-grid-column binding="channels.id" caption="channels.id" type="integer" primary-key="true" generator="identity" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                        <wm-grid-action key="addNewRow" label="New" value="new" icon="new" show="true" class="btn-primary" action="addNewRow()"></wm-grid-action>
+                    </wm-grid>
+                    <wm-liveform novalidate="false" height="200" name="liveform3" dataset="bind:Variables.SalesdbRepsData.dataSet" formtype="inline">
+                        <wm-form-field display-name="id" show="true" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true"></wm-form-field>
+                        <wm-form-field display-name="name" show="true" primary-key="false" generator="null" key="name" type="string" maxvalue="32" readonly="false" required="true"></wm-form-field>
+                        <wm-form-field display-name="channels" show="true" generator="assigned" key="channels" type="list" is-related="true" primary-key="false"></wm-form-field>
+                        <wm-form-field display-name="street" show="true" primary-key="false" generator="null" key="street" type="string" maxvalue="64" readonly="false" required="false"></wm-form-field>
+                        <wm-form-field display-name="city" show="true" primary-key="false" generator="null" key="city" type="string" maxvalue="32" readonly="false" required="false"></wm-form-field>
+                        <wm-form-field display-name="state" show="true" primary-key="false" generator="null" key="state" type="string" maxvalue="2" readonly="false" required="false"></wm-form-field>
+                        <wm-form-field display-name="zip" show="true" primary-key="false" generator="null" key="zip" type="string" maxvalue="6" readonly="false" required="false"></wm-form-field>
+                        <wm-form-field display-name="picurl" show="true" primary-key="false" generator="null" key="picurl" type="string" maxvalue="1024" readonly="false" required="false"></wm-form-field>
+                        <wm-form-field display-name="password" show="true" primary-key="false" generator="null" key="password" type="string" maxvalue="32" readonly="false" required="false"></wm-form-field>
+                        <wm-form-field display-name="role" show="true" primary-key="false" generator="null" key="role" type="string" maxvalue="32" readonly="false" required="false"></wm-form-field>
+                        <wm-form-action key="save" class="form-save btn-success" iconname="save" display-name="save" show="true" type="submit" update-mode="true"></wm-form-action>
+                        <wm-form-action key="cancel" class="form-cancel" iconname="cancel" action="formCancel()" display-name="cancel" show="true" type="button" update-mode="true"></wm-form-action>
+                    </wm-liveform>
+                </wm-livegrid>
+            </wm-column>
+        </wm-row>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+</wm-page>

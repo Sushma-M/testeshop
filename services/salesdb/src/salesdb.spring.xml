@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<beans xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd" xmlns="http://www.springframework.org/schema/beans" xmlns:security="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <context:component-scan base-package="com.salesdb.controller,com.salesdb.service,com.salesdb.dao" xmlns:context="http://www.springframework.org/schema/context"/>
+    <bean class="com.wavemaker.runtime.data.spring.WMPropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>
+                    classpath:salesdb.properties
+                </value>
+            </list>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+    </bean>
+    <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" depends-on="systemPropertyInitializer" destroy-method="close" id="salesdbDataSource" p:unreturnedConnectionTimeout="300" p:password="${salesdb.password}" p:contextClassLoaderSource="library" p:maxIdleTime="600" p:privilegeSpawnedThreads="true" p:debugUnreturnedConnectionStackTraces="true" p:acquireRetryAttempts="3" p:acquireRetryDelay="1000" p:jdbcUrl="${salesdb.url}" p:user="${salesdb.username}" p:driverClass="${salesdb.driverClass}" p:idleConnectionTestPeriod="300" p:maxPoolSize="4" p:minPoolSize="2" xmlns:p="http://www.springframework.org/schema/p"/>
+    <bean class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" id="salesdbSessionFactory">
+        <property name="dataSource" ref="salesdbDataSource"/>
+        <property name="packagesToScan" value="com.salesdb"/>
+        <property name="mappingResources">
+            <list>
+                <value>
+                    salesdb-queries.hbm.xml
+                </value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">
+                    ${salesdb.dialect}
+                </prop>
+                <prop key="hibernate.show_sql">
+                    false
+                </prop>
+                <prop key="hibernate.hbm2ddl.auto">
+                    update
+                </prop>
+                <prop key="hibernate.globally_quoted_identifiers">
+                false
+                </prop>
+            </props>
+        </property>
+    </bean>
+    <bean class="org.springframework.orm.hibernate4.HibernateTransactionManager" id="salesdbTransactionManager">
+        <property name="sessionFactory" ref="salesdbSessionFactory"/>
+    </bean>
+    <bean class="org.springframework.orm.hibernate4.HibernateTemplate" id="salesdbTemplate">
+        <property name="sessionFactory" ref="salesdbSessionFactory"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.data.dao.query.WMQueryExecutorImpl" id="salesdbWMQueryExecutor">
+        <property name="template" ref="salesdbTemplate"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.data.dao.procedure.WMProcedureExecutorImpl" id="salesdbWMProcedureExecutor">
+        <property name="template" ref="salesdbTemplate"/>
+        <property name="serviceId" value="salesdb"/>
+    </bean>
+    <tx:annotation-driven xmlns:tx="http://www.springframework.org/schema/tx"/>
+</beans>

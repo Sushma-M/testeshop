@@ -1,0 +1,27 @@
+<wm-page data-ng-controller="Page5PageController" name="page1">
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-tabs name="tabs1">
+                <wm-tabpane name="tabpane1">
+                    <wm-tabheader name="tabheader1"></wm-tabheader>
+                    <wm-tabcontent name="tabcontent1"></wm-tabcontent>
+                </wm-tabpane>
+                <wm-tabpane name="tabpane2">
+                    <wm-tabheader name="tabheader2"></wm-tabheader>
+                    <wm-tabcontent name="tabcontent2"></wm-tabcontent>
+                </wm-tabpane>
+                <wm-tabpane name="tabpane3">
+                    <wm-tabheader name="tabheader3"></wm-tabheader>
+                    <wm-tabcontent name="tabcontent3"></wm-tabcontent>
+                </wm-tabpane>
+            </wm-tabs>
+            <wm-menu caption="Menu" name="menu1"></wm-menu>
+            <wm-composite name="composite1">
+                <wm-label class="col-md-3" name="label1"></wm-label>
+                <wm-container class="col-md-9" name="container1">
+                    <wm-text name="text1" required="true" on-focus="text1Focus($event, $scope)"></wm-text>
+                </wm-container>
+            </wm-composite>
+        </wm-page-content>
+    </wm-content>
+</wm-page>

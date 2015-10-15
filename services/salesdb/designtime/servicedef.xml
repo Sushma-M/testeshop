@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="salesdb" CRUDService="true" type="DataService" springFile="salesdb.spring.xml">
+    <operation operationType="nativequery" name="customersRatio">
+        <parameter name="year" typeRef="java.lang.Integer" isList="false"/>
+        <parameter name="month" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="leadsByChannel">
+        <parameter name="channel" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="leadsCount">
+        <parameter name="channel" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="repsCount">
+        <parameter name="channel" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="revenueHeatMap">
+        <parameter name="year" typeRef="java.lang.Integer" isList="false"/>
+        <parameter name="month" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="salesByChannels">
+        <parameter name="year" typeRef="java.lang.Integer" isList="false"/>
+        <parameter name="month" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="salesByEachRep">
+        <parameter name="id" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="salesByReps">
+        <parameter name="channel" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="salesRevenueAndCount">
+        <parameter name="channel" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="topTrendingProducts">
+        <parameter name="year" typeRef="java.lang.Integer" isList="false"/>
+        <parameter name="month" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="weeklyConverted">
+        <parameter name="year" typeRef="java.lang.Integer" isList="false"/>
+        <parameter name="month" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="weeklyFollowUps">
+        <parameter name="year" typeRef="java.lang.Integer" isList="false"/>
+        <parameter name="month" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="weeklyLeads">
+        <parameter name="year" typeRef="java.lang.Integer" isList="false"/>
+        <parameter name="month" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="weeklyQuotes">
+        <parameter name="year" typeRef="java.lang.Integer" isList="false"/>
+        <parameter name="month" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="weeklySales">
+        <parameter name="year" typeRef="java.lang.Integer" isList="false"/>
+        <parameter name="month" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <operation operationType="nativequery" name="eachRepCustomerWiseSales">
+        <parameter name="id" typeRef="java.lang.Integer" isList="false"/>
+        <return isList="false"/>
+    </operation>
+    <dataobjects>
+        <dataobject javaType="com.salesdb.Customers">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="states" typeRef="com.salesdb.States" isList="false" allowNull="true"/>
+            <element name="name" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="leadses" typeRef="com.salesdb.Leads" isList="true" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.salesdb.States">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="name" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="abbrev" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="customerses" typeRef="com.salesdb.Customers" isList="true" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.salesdb.FollowUps">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="quotes" typeRef="com.salesdb.Quotes" isList="false" allowNull="true"/>
+            <element name="entryDate" typeRef="java.util.Date" isList="false" allowNull="false"/>
+        </dataobject>
+        <dataobject javaType="com.salesdb.Channels">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="name" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="repses" typeRef="com.salesdb.Reps" isList="true" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.salesdb.Sales">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="products" typeRef="com.salesdb.Products" isList="false" allowNull="true"/>
+            <element name="quotes" typeRef="com.salesdb.Quotes" isList="false" allowNull="true"/>
+            <element name="entryDate" typeRef="java.util.Date" isList="false" allowNull="true"/>
+            <element name="sales" typeRef="java.lang.Integer" isList="false" allowNull="true"/>
+            <element name="isRenewal" typeRef="java.lang.Boolean" isList="false" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.salesdb.Tasks">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="reps" typeRef="com.salesdb.Reps" isList="false" allowNull="true"/>
+            <element name="description" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="duedate" typeRef="java.util.Date" isList="false" allowNull="true"/>
+            <element name="done" typeRef="java.lang.Boolean" isList="false" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.salesdb.Quotes">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="reps" typeRef="com.salesdb.Reps" isList="false" allowNull="true"/>
+            <element name="leads" typeRef="com.salesdb.Leads" isList="false" allowNull="true"/>
+            <element name="entryDate" typeRef="java.util.Date" isList="false" allowNull="true"/>
+            <element name="estimatedSale" typeRef="java.lang.Integer" isList="false" allowNull="true"/>
+            <element name="saleses" typeRef="com.salesdb.Sales" isList="true" allowNull="true"/>
+            <element name="followUpses" typeRef="com.salesdb.FollowUps" isList="true" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.salesdb.Products">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="name" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="saleses" typeRef="com.salesdb.Sales" isList="true" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.salesdb.Reps">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="channels" typeRef="com.salesdb.Channels" isList="false" allowNull="true"/>
+            <element name="name" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="street" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="city" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="state" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="zip" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="picurl" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="password" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="role" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="quoteses" typeRef="com.salesdb.Quotes" isList="true" allowNull="true"/>
+            <element name="taskses" typeRef="com.salesdb.Tasks" isList="true" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.salesdb.Leads">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="customers" typeRef="com.salesdb.Customers" isList="false" allowNull="true"/>
+            <element name="entryDate" typeRef="java.util.Date" isList="false" allowNull="false"/>
+            <element name="quoteses" typeRef="com.salesdb.Quotes" isList="true" allowNull="true"/>
+        </dataobject>
+    </dataobjects>
+</service>

@@ -1,0 +1,43 @@
+<style id="leadsList.css">
+
+</style>
+<script id="leadsList.js">
+Application.$controller("leadsListPageController", ["$scope",
+    function($scope) {
+        "use strict";
+
+        $scope.onLeadClick = function($event, $isolateScope) {
+            $scope.Variables.selectedLead.dataSet = $isolateScope.item;
+            $scope.Variables.mapLocations.dataSet = [{
+                "info": $isolateScope.item.Name,
+                "coords": {
+                    "lat": $isolateScope.item.Latitude__c,
+                    "lng": $isolateScope.item.Longitude__c
+                }
+            }];
+        }
+
+
+    }
+]);
+
+Application.$controller("livelist1Controller", ["$scope",
+    function($scope) {
+        "use strict";
+        $scope.ctrlScope = $scope;
+    }
+]);
+</script>
+<script id="leadsList.variables.json">
+var _leadsListPage_Variables_ ={}
+</script>
+<script id="leadsList.html" type="text/ng-template">
+<wm-partial data-ng-controller="leadsListPageController" name="partial1" type="left-panel">
+    <wm-livelist class="app-list salesforce-leads" name="livelist1" data-ng-controller="livelist1Controller" dataset="bind:Widgets.salesForcePrefab.result" on-click="onLeadClick($event, $scope)" pagesize="100" listclass="nav nav-pills">
+        <wm-listtemplate name="listtemplate1">
+            <wm-anchor hyperlink="#" caption="bind:Widgets.salesForcePrefab.result.Name" data-ng-class="{'active': item.Name === Variables.selectedLead.dataSet.Name}" name="label1" textalign="left"></wm-anchor>
+        </wm-listtemplate>
+    </wm-livelist>
+    <wm-prefab name="salesForcePrefab" prefabname="SalesForce" password="IncW@v3M@k3RvqLYpBEIqfQaTBp2x6LvDNPVR"></wm-prefab>
+</wm-partial>
+</script>

@@ -1,0 +1,333 @@
+/*START - Vintage Theme*/
+
+.wm-app {
+  @import url("../../../components/bootstrap/less/bootstrap.less");
+  @import url("variables.less");
+
+  font-size: @font-size-base;
+  color: @text-color;
+  font-family: @font-family-base;
+
+  /*******override the bootstrap styles since the style properties doesn't exist****/
+  //Variables
+  @app-border-color: #CECECE;
+
+  a {
+    color: #E76049;
+  }
+
+  //Panels
+  .panel {
+    border: 0;
+
+    .panel-heading {
+      background-color: #ffffff;
+      border-color: transparent;
+
+      .heading {
+        margin: 0;
+      }
+
+      .panel-actions {
+        .app-menu .app-button,.panel-action {
+          color: #C1C2C3;
+          font-size: 1em;
+        }
+      }
+
+      + .panel-collapse > .panel-body {
+        border-top-color: transparent;
+      }
+    }
+    .panel-title {
+      font-weight: normal;
+      font-size: 1em;
+    }
+
+    .panel-body {
+      padding-top: 0;
+    }
+  }
+
+
+  //Tabs
+  .nav-tabs {
+    > li {
+      margin-right: 1em;
+      > a {
+        background-color: #EDEDED;
+        color: inherit;
+        border: 1px solid #CECECE;
+        border-bottom: 0;
+
+        &:hover {
+          color: #ffffff;
+          background-color: darken(#EDEDED, 10%);
+        }
+      }
+    }
+  }
+
+  //Tab Content
+  .tab-content {
+    .tab-body {
+      border-color: @app-border-color;
+      padding: 1.25em 1.6em;
+    }
+  }
+
+
+  //Calendar and Date Widgets common styles
+  .app-calendar {
+    .btn-default {
+      border-radius: 0;
+      border-color: transparent;
+
+      &.active {
+        color: #ffffff;
+        background-color: #bcd4af;
+        border-color: #bcd4af;
+
+        &:hover {
+          color: #ffffff;
+          background-color: #bcd4af;
+          border-color: #bcd4af;
+        }
+
+        .text-info {
+          color: #FFFFFF;
+        }
+      }
+
+      &.pull-left, &.pull-right {
+        width: 100%;
+      }
+    }
+
+    .well {
+      background-image: none;
+      background-color: #424F63;
+      color: #ffffff;
+      padding: 0.4em;
+    }
+  }
+
+  //Dropdown
+  .dropdown-menu {
+    margin-top: 0;
+  }
+
+  //Date Widget
+  .date-wrapper {
+    .dropdown-menu {
+      color: #ffffff;
+
+      .btn-default {
+        border-radius: 0;
+        border-color: transparent;
+
+        &.active {
+          background-color: #bcd4af;
+          color: #ffffff;
+        }
+      }
+    }
+
+    table {
+      background-color: transparent;
+    }
+  }
+
+
+  //Label
+  label {
+    font-weight: normal;
+  }
+
+  //Tile
+  .app-tile.panel {
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+
+    .panel-body {
+      border-width: 0.33em 0 0;
+    }
+  }
+
+  .list-group-item-separator {
+    margin-bottom: 0.25em;
+    border-radius: 0.25em;
+    .form-group {
+      padding: 0 1em;
+    }
+  }
+
+  //Navigation
+  .nav {
+    > li {
+      > a {
+        &:hover, &:focus {
+          color: #FFFFFF;
+        }
+      }
+    }
+  }
+
+  /*Modal*/
+  .modal-header {
+    color: #FFF;
+    font-weight: bold;
+    background-color: #998F89;
+    border-bottom-color: #7B706A;
+  }
+
+  .modal-footer {
+    border-top-color: #c8c3c0;
+  }
+
+  //Breadcrumbs
+  .breadcrumb {
+    background-color: #c3cfcf;
+    box-shadow: 0 0 2px rgba(66,84,84,1);
+
+    > .active {
+      font-weight: bold;
+    }
+
+    > li + li:before {
+      color: #ffffff;
+      font-weight: bold;
+    }
+  }
+
+  /*Layout**************************************************************************/
+  .app-content-column {
+    background-color: #FAFAF3;
+  }
+
+  //Mobile Specific button
+  .navbar-toggle {
+    margin-right: 1.2em;
+    color: #ffffff;
+  }
+
+  //Header
+  .app-header {
+    background-color: #273135;
+    color: #89949B;
+
+    .nav {
+      > li {
+        > a {
+          color: #bcd4af;
+
+          &:hover {
+            color: #FFFFFF;
+            background-color: #BCD4AF;
+          }
+        }
+      }
+    }
+  }
+
+  //Application Name
+  .application-name {
+    color: #ffffff;
+  }
+
+  //Top Nav Bar
+  .app-navbar {
+    border-radius: 0;
+    box-shadow: inset 0px 2px 0.5em 1px rgba(22, 25, 28, 0.3);
+    -webkit-box-shadow: inset 0px 2px 0.5em 1px rgba(22, 25, 28, 0.3);
+    -moz-box-shadow: inset 0px 2px 0.5em 1px rgba(22, 25, 28, 0.3);
+    -ms-box-shadow: inset 0px 2px 0.5em 1px rgba(22, 25, 28, 0.3);
+    -o-box-shadow: inset 0px 2px 0.5em 1px rgba(22, 25, 28, 0.3);
+
+    .navbar-nav {
+
+      > li {
+        a {
+          color: @navbar-default-link-color;
+
+          &:hover, &:focus, &.active {
+            color: @navbar-default-link-hover-color;
+            text-decoration: none;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bcd4af), color-stop(1, #a0b894));
+            background: -webkit-linear-gradient(top, #bcd4af 5%, #a0b894 100%);
+            background: -moz-linear-gradient(top, #bcd4af 5%, #a0b894 100%);
+            background: -o-linear-gradient(top, #bcd4af 5%, #a0b894 100%);
+            background: -ms-linear-gradient(top, #bcd4af 5%, #a0b894 100%);
+            background: linear-gradient(to bottom, #bcd4af 5%, #a0b894 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#bcd4af, endColorstr=#a0b894);
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorStr='#bcd4af', EndColorStr='#a0b894')";
+          }
+        }
+
+        > .dropdown .dropdown-menu {
+          margin: 0;
+        }
+      }
+    }
+
+    //Mobile Specific button
+    .navbar-toggle {
+      margin-right: 1.2em;
+      color: #ffffff;
+
+      &:hover, &:focus {
+        color: #a0b894;
+        background-color: #ffffff;
+      }
+    }
+  }
+
+  .app-left-panel, .app-right-panel {
+    .nav {
+      > li {
+        margin-top: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+        > a, > .btn {
+          color: #505865;
+          padding: 1em;
+          position: relative;
+          border-radius: 0;
+          border-left: 0.33em solid transparent;
+
+          &:hover {
+            text-decoration: none;
+            color: #FFF;
+            background: #3a3532;
+          }
+
+          &.active {
+            color: #FFF;
+            background-color: #3a3532;
+            border-left-color: #E76049;
+          }
+
+          .glyphicon {
+            margin-right: 1em;
+          }
+        }
+      }
+    }
+  }
+
+  //Left Panel
+  .app-left-panel {
+    background-color: #f5f6ea;
+  }
+
+  //Right Panel
+  .app-right-panel {
+    background-color: #f5f6ea;
+  }
+
+  //Footer
+  .app-footer {
+    padding: 1em 1.5em;
+  }
+}

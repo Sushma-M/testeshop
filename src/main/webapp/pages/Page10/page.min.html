@@ -1,0 +1,40 @@
+<style id="Page10.css">
+
+</style>
+<script id="Page10.js">
+Application.$controller("Page10PageController", ["$scope", function ($scope) {
+    "use strict";
+
+    /* perform any action with the variables inside this block(on-page-load) */
+    $scope.onPageVariablesReady = function () {
+        /*
+         * variables can be accessed through '$scope.Variables' property here
+         * e.g. $scope.Variables.staticVariable1.getData()
+         */
+    };
+    
+    /* perform any action with widgets inside this block */
+    $scope.onPageReady = function () {
+        /*
+         * widgets can be accessed through '$scope.Widgets' property here
+         * e.g. $scope.Widgets.byId(), $scope.Widgets.byName()or access widgets by $scope.Widgets.widgetName
+         */
+    };
+
+}]);
+
+</script>
+<script id="Page10.variables.json">
+var _Page10Page_Variables_ ={};
+</script>
+<script id="Page10.html" type="text/ng-template">
+<wm-page data-ng-controller="Page10PageController" name="page1">
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-panel class="panel-default" collapsible="true" showheader="true" name="panel1">
+                <wm-panel-footer name="panel_footer1"></wm-panel-footer>
+            </wm-panel>
+        </wm-page-content>
+    </wm-content>
+</wm-page>
+</script>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class entity-name="com.salesdb.Customers" table="CUSTOMERS" schema="PUBLIC">
+        <id name="id" type="integer">
+            <column name="ID" length="255" not-null="true" precision="19"/>
+            <generator class="identity"/>
+        </id>
+        <property name="name" type="string">
+            <column name="NAME" length="32" not-null="true" precision="19"/>
+        </property>
+        <many-to-one name="STATES" class="com.salesdb.States" fetch="select">
+            <column name="STATE_ID" length="255" not-null="false" precision="19"/>
+        </many-to-one>
+        <set name="CUSTOMERS_2" table="CUSTOMERS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CUSTOMER_ID"/>
+            </key>
+            <one-to-many class="com.salesdb.Leads"/>
+        </set>
+    </class>
+    <class entity-name="com.salesdb.States" table="STATES" schema="PUBLIC">
+        <id name="id" type="integer">
+            <column name="ID" length="255" not-null="true" precision="19"/>
+            <generator class="identity"/>
+        </id>
+        <property name="name" type="string">
+            <column name="NAME" length="40" not-null="true" precision="19"/>
+        </property>
+        <property name="abbrev" type="string">
+            <column name="ABBREV" length="2" not-null="true" precision="19"/>
+        </property>
+        <set name="STATES_1" table="STATES" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="STATE_ID"/>
+            </key>
+            <one-to-many class="com.salesdb.Customers"/>
+        </set>
+    </class>
+    <class entity-name="com.salesdb.FollowUps" table="FOLLOW_UPS" schema="PUBLIC">
+        <id name="id" type="integer">
+            <column name="ID" length="255" not-null="true" precision="19"/>
+            <generator class="identity"/>
+        </id>
+        <property name="entryDate" type="date">
+            <column name="ENTRY_DATE" length="10" not-null="true" precision="19"/>
+        </property>
+        <many-to-one name="QUOTES" class="com.salesdb.Quotes" fetch="select">
+            <column name="QUOTE_ID" length="255" not-null="false" precision="19"/>
+        </many-to-one>
+    </class>
+    <class entity-name="com.salesdb.Channels" table="CHANNELS" schema="PUBLIC">
+        <id name="id" type="integer">
+            <column name="ID" length="255" not-null="true" precision="19"/>
+            <generator class="identity"/>
+        </id>
+        <property name="name" type="string">
+            <column name="NAME" length="40" not-null="true" precision="19"/>
+        </property>
+        <set name="CHANNELS_1" table="CHANNELS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CHANNEL_TYPE"/>
+            </key>
+            <one-to-many class="com.salesdb.Reps"/>
+        </set>
+    </class>
+    <class entity-name="com.salesdb.Sales" table="SALES" schema="PUBLIC">
+        <id name="id" type="integer">
+            <column name="ID" length="255" not-null="true" precision="19"/>
+            <generator class="identity"/>
+        </id>
+        <property name="entryDate" type="date">
+            <column name="ENTRY_DATE" length="10" not-null="false" precision="19"/>
+        </property>
+        <property name="sales" type="integer">
+            <column name="SALES" length="255" not-null="false" precision="19"/>
+        </property>
+        <property name="isRenewal" type="boolean">
+            <column name="IS_RENEWAL" length="255" not-null="false" precision="19"/>
+        </property>
+        <many-to-one name="PRODUCTS" class="com.salesdb.Products" fetch="select">
+            <column name="PRODUCT_ID" length="255" not-null="false" precision="19"/>
+        </many-to-one>
+        <many-to-one name="QUOTES" class="com.salesdb.Quotes" fetch="select">
+            <column name="QUOTE_ID" length="255" not-null="false" precision="19"/>
+        </many-to-one>
+    </class>
+    <class entity-name="com.salesdb.Tasks" table="TASKS" schema="PUBLIC">
+        <id name="id" type="integer">
+            <column name="ID" length="255" not-null="true" precision="19"/>
+            <generator class="identity"/>
+        </id>
+        <property name="description" type="text">
+            <column name="DESCRIPTION" length="16777216" not-null="false" precision="19"/>
+        </property>
+        <property name="duedate" type="date">
+            <column name="DUEDATE" length="10" not-null="false" precision="19"/>
+        </property>
+        <property name="done" type="boolean">
+            <column name="DONE" length="255" not-null="false" precision="19"/>
+        </property>
+        <many-to-one name="REPS" class="com.salesdb.Reps" fetch="select">
+            <column name="REP_ID" length="255" not-null="false" precision="19"/>
+        </many-to-one>
+    </class>
+    <class entity-name="com.salesdb.Quotes" table="QUOTES" schema="PUBLIC">
+        <id name="id" type="integer">
+            <column name="ID" length="255" not-null="true" precision="19"/>
+            <generator class="identity"/>
+        </id>
+        <property name="entryDate" type="date">
+            <column name="ENTRY_DATE" length="10" not-null="false" precision="19"/>
+        </property>
+        <property name="estimatedSale" type="integer">
+            <column name="ESTIMATED_SALE" length="255" not-null="false" precision="19"/>
+        </property>
+        <many-to-one name="REPS" class="com.salesdb.Reps" fetch="select">
+            <column name="REP_ID" length="255" not-null="false" precision="19"/>
+        </many-to-one>
+        <many-to-one name="LEADS" class="com.salesdb.Leads" fetch="select">
+            <column name="LEAD_ID" length="255" not-null="false" precision="19"/>
+        </many-to-one>
+        <set name="QUOTES_3" table="QUOTES" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="QUOTE_ID"/>
+            </key>
+            <one-to-many class="com.salesdb.Sales"/>
+        </set>
+        <set name="QUOTES_4" table="QUOTES" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="QUOTE_ID"/>
+            </key>
+            <one-to-many class="com.salesdb.FollowUps"/>
+        </set>
+    </class>
+    <class entity-name="com.salesdb.Products" table="PRODUCTS" schema="PUBLIC">
+        <id name="id" type="integer">
+            <column name="ID" length="255" not-null="true" precision="19"/>
+            <generator class="identity"/>
+        </id>
+        <property name="name" type="string">
+            <column name="NAME" length="40" not-null="true" precision="19"/>
+        </property>
+        <set name="PRODUCTS_1" table="PRODUCTS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PRODUCT_ID"/>
+            </key>
+            <one-to-many class="com.salesdb.Sales"/>
+        </set>
+    </class>
+    <class entity-name="com.salesdb.Reps" table="REPS" schema="PUBLIC">
+        <id name="id" type="integer">
+            <column name="ID" length="255" not-null="true" precision="19"/>
+            <generator class="identity"/>
+        </id>
+        <property name="name" type="string">
+            <column name="NAME" length="32" not-null="true" precision="19"/>
+        </property>
+        <property name="street" type="string">
+            <column name="STREET" length="64" not-null="false" precision="19"/>
+        </property>
+        <property name="city" type="string">
+            <column name="CITY" length="32" not-null="false" precision="19"/>
+        </property>
+        <property name="state" type="string">
+            <column name="STATE" length="2" not-null="false" precision="19"/>
+        </property>
+        <property name="zip" type="string">
+            <column name="ZIP" length="6" not-null="false" precision="19"/>
+        </property>
+        <property name="picurl" type="string">
+            <column name="PICURL" length="1024" not-null="false" precision="19"/>
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" length="32" not-null="false" precision="19"/>
+        </property>
+        <property name="role" type="string">
+            <column name="ROLE" length="32" not-null="false" precision="19"/>
+        </property>
+        <many-to-one name="CHANNELS" class="com.salesdb.Channels" fetch="select">
+            <column name="CHANNEL_TYPE" length="255" not-null="false" precision="19"/>
+        </many-to-one>
+        <set name="REPS_2" table="REPS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="REP_ID"/>
+            </key>
+            <one-to-many class="com.salesdb.Quotes"/>
+        </set>
+        <set name="REPS_3" table="REPS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="REP_ID"/>
+            </key>
+            <one-to-many class="com.salesdb.Tasks"/>
+        </set>
+    </class>
+    <class entity-name="com.salesdb.Leads" table="LEADS" schema="PUBLIC">
+        <id name="id" type="integer">
+            <column name="ID" length="255" not-null="true" precision="19"/>
+            <generator class="identity"/>
+        </id>
+        <property name="entryDate" type="date">
+            <column name="ENTRY_DATE" length="10" not-null="true" precision="19"/>
+        </property>
+        <many-to-one name="CUSTOMERS" class="com.salesdb.Customers" fetch="select">
+            <column name="CUSTOMER_ID" length="255" not-null="false" precision="19"/>
+        </many-to-one>
+        <set name="LEADS_2" table="LEADS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="LEAD_ID"/>
+            </key>
+            <one-to-many class="com.salesdb.Quotes"/>
+        </set>
+    </class>
+</hibernate-mapping>
