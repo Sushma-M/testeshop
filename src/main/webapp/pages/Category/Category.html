@@ -1,0 +1,31 @@
+<wm-page layouttype="two-column" columns="2" data-ng-controller="CategoryPageController" name="CategoryPage">
+    <wm-header content="header" name="header" backgroundcolor="#005387" class="eshop-header" height="6em"></wm-header>
+    <wm-top-nav name="navbarprimary" class="eshop-menu" backgroundcolor="#0a3151" content="topnav"></wm-top-nav>
+    <wm-content name="content1">
+            <wm-left-panel contentwidth="2" name="leftpanel1" class="menu-panel">
+                <wm-nav name="categoryMenuList" class="category-menu-list" type="pills" layout="stacked">
+                    <wm-nav-item name="listitem5" data-ng-repeat="product in productsList">
+                        <wm-anchor name="anchor5" class="menu-link" caption="{{product.dataValue}}" href="#/Category/{{product.dataValue}}" data-ng-class="{'active': product.dataValue===activeCategory}"></wm-anchor>
+                    </wm-nav-item>
+                </wm-nav>
+            </wm-left-panel>
+            <wm-page-content columnwidth="10" name="CategoryPageContent">
+                      <wm-label name="label5" caption="bind:Variables.selectedCategory.dataSet.dataValue" fontsize="1.3" fontunit="em"></wm-label>
+                      <wm-livelist name="productList" data-ng-controller="productListController" dataset="bind:Variables.products.dataSet" class="products" shownavigation="true" itemsperrow="4" listclass="list-group">
+                          <wm-listtemplate layout="thumbnail" name="productsTemplate">
+                              <a href="#/Products/{{item.id}}">
+                                  <wm-container name="container3" height="12em" class="thumbnail" horizontalalign="center">
+                                      <wm-picture name="product_thumb" picturesource="bind:Variables.products.dataSet.imgUrl" pictureaspect="None" class="product-thumb" height="5em"></wm-picture>
+                                      <wm-container class="caption" data-template-ctr="true" name="container4">
+                                          <wm-label caption="$" fontweight="bold" name="label3" color="#000000"></wm-label>
+                                          <wm-label name="product_price" caption="bind:Variables.products.dataSet.price" fontweight="bold" color="#000000" margintop="10"></wm-label>
+                                          <wm-label name="product_name" class="product-name" marginright="15" caption="bind:Variables.products.dataSet.name" width="100%" fontsize="0.8" hint="{{item.name}}" fontunit="em" color="#464646"></wm-label>
+                                      </wm-container>
+                                  </wm-container>
+                              </a>
+                          </wm-listtemplate>
+                      </wm-livelist>
+               </wm-page-content>
+    </wm-content>
+    <wm-footer name="footer" content="footer"></wm-footer>
+</wm-page>

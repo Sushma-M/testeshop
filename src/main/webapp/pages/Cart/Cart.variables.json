@@ -1,0 +1,1143 @@
+{
+	"cartDelete": {
+		"name": "cartDelete",
+		"type": "Itemorder",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"id": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 20,
+		"designMaxResults": 10,
+		"operation": "delete",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"liveSource": "eshopping",
+		"ignoreCase": false,
+		"matchMode": "start",
+		"filterFields": {},
+		"inputFields": {},
+		"category": "wm.LiveVariable",
+		"_id": "wm-wm.LiveVariable1409048814276",
+		"package": "com.eshopping.Itemorder",
+		"tableName": "ITEMORDER",
+		"properties": [
+			"ITEMORDER_1",
+			"ITEMORDER_2"
+		],
+		"relatedTables": [
+			{
+				"columnName": "product",
+				"relationName": "ITEMORDER_1",
+				"type": "Product",
+				"package": "com.eshopping.ITEMORDER",
+				"watchOn": "EshoppingProductData"
+			},
+			{
+				"columnName": "user",
+				"relationName": "ITEMORDER_2",
+				"type": "User",
+				"package": "com.eshopping.ITEMORDER",
+				"watchOn": "EshoppingUserData"
+			}
+		],
+		"propertiesMap": {
+			"columns": [
+				{
+					"fieldName": "id",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "ID",
+					"isPrimaryKey": true,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": "identity",
+					"isRelated": false
+				},
+				{
+					"fieldName": "product",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "product_id",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": true,
+					"relatedTableName": "PRODUCT",
+					"relatedEntityName": "Product",
+					"columns": [
+						{
+							"fieldName": "id",
+							"type": "integer",
+							"fullyQualifiedType": "integer",
+							"columnName": "ID",
+							"isPrimaryKey": true,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": "identity",
+							"isRelated": false
+						},
+						{
+							"fieldName": "img_url",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "IMG_URL",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "category",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "CATEGORY",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "price",
+							"type": "double",
+							"fullyQualifiedType": "double",
+							"columnName": "PRICE",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 64,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "description",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "DESCRIPTION",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "name",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "NAME",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "availability",
+							"type": "boolean",
+							"fullyQualifiedType": "boolean",
+							"columnName": "AVAILABILITY",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						}
+					]
+				},
+				{
+					"fieldName": "status",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "STATUS",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "user",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "user_id",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": true,
+					"relatedTableName": "USER",
+					"relatedEntityName": "User",
+					"columns": [
+						{
+							"fieldName": "id",
+							"type": "integer",
+							"fullyQualifiedType": "integer",
+							"columnName": "ID",
+							"isPrimaryKey": true,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": "identity",
+							"isRelated": false
+						},
+						{
+							"fieldName": "landmark",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "LANDMARK",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "phone",
+							"type": "integer",
+							"fullyQualifiedType": "integer",
+							"columnName": "PHONE",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "pin",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "PIN",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "email",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "EMAIL",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "street",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "STREET",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "name",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "NAME",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "product_bought",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "PRODUCT_BOUGHT",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "password",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "PASSWORD",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "country",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "COUNTRY",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "city",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "CITY",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						}
+					]
+				},
+				{
+					"fieldName": "quantity",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "QUANTITY",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				}
+			],
+			"entityName": "Itemorder",
+			"fullyQualifiedName": "com.eshopping.Itemorder"
+		}
+	},
+	"ordersInsert": {
+		"name": "ordersInsert",
+		"type": "Productorder",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"id": "",
+			"status": "",
+			"user_id": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 20,
+		"designMaxResults": 10,
+		"operation": "insert",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"liveSource": "eshopping",
+		"ignoreCase": false,
+		"matchMode": "start",
+		"filterFields": {},
+		"inputFields": {},
+		"category": "wm.LiveVariable",
+		"_id": "wm-wm.LiveVariable1409048861894",
+		"package": "com.eshopping.Productorder",
+		"tableName": "PRODUCTORDER",
+		"properties": [
+			"PRODUCTORDER_1"
+		],
+		"relatedTables": [
+			{
+				"columnName": "user",
+				"relationName": "PRODUCTORDER_1",
+				"type": "User",
+				"package": "com.eshopping.PRODUCTORDER",
+				"watchOn": "EshoppingUserData"
+			}
+		],
+		"propertiesMap": {
+			"columns": [
+				{
+					"fieldName": "id",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "ID",
+					"isPrimaryKey": true,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": "identity",
+					"isRelated": false
+				},
+				{
+					"fieldName": "status",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "STATUS",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "user",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "user_id",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": true,
+					"relatedTableName": "USER",
+					"relatedEntityName": "User",
+					"columns": [
+						{
+							"fieldName": "id",
+							"type": "integer",
+							"fullyQualifiedType": "integer",
+							"columnName": "ID",
+							"isPrimaryKey": true,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": "identity",
+							"isRelated": false
+						},
+						{
+							"fieldName": "landmark",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "LANDMARK",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "phone",
+							"type": "integer",
+							"fullyQualifiedType": "integer",
+							"columnName": "PHONE",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "pin",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "PIN",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "email",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "EMAIL",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "street",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "STREET",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "name",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "NAME",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "product_bought",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "PRODUCT_BOUGHT",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "password",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "PASSWORD",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "country",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "COUNTRY",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "city",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "CITY",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						}
+					]
+				}
+			],
+			"entityName": "Productorder",
+			"fullyQualifiedName": "com.eshopping.Productorder"
+		}
+	},
+	"orderDetailsInsert": {
+		"name": "orderDetailsInsert",
+		"type": "Orderdetail",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"id": "",
+			"order_id": "",
+			"product_id": "",
+			"quantity": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 20,
+		"designMaxResults": 10,
+		"operation": "insert",
+		"startUpdate": false,
+		"autoUpdate": false,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"liveSource": "eshopping",
+		"ignoreCase": false,
+		"matchMode": "start",
+		"filterFields": {},
+		"inputFields": {},
+		"category": "wm.LiveVariable",
+		"_id": "wm-wm.LiveVariable1409048919835",
+		"package": "com.eshopping.Orderdetail",
+		"tableName": "ORDERDETAIL",
+		"properties": [
+			"ORDERDETAIL_1",
+			"ORDERDETAIL_2"
+		],
+		"relatedTables": [
+			{
+				"columnName": "product",
+				"relationName": "ORDERDETAIL_1",
+				"type": "Product",
+				"package": "com.eshopping.ORDERDETAIL",
+				"watchOn": "EshoppingProductData"
+			},
+			{
+				"columnName": "productorder",
+				"relationName": "ORDERDETAIL_2",
+				"type": "Productorder",
+				"package": "com.eshopping.ORDERDETAIL",
+				"watchOn": "EshoppingProductorderData"
+			}
+		],
+		"propertiesMap": {
+			"columns": [
+				{
+					"fieldName": "id",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "ID",
+					"isPrimaryKey": true,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": "identity",
+					"isRelated": false
+				},
+				{
+					"fieldName": "productorder",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "order_id",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": true,
+					"relatedTableName": "PRODUCTORDER",
+					"relatedEntityName": "Productorder",
+					"columns": [
+						{
+							"fieldName": "id",
+							"type": "integer",
+							"fullyQualifiedType": "integer",
+							"columnName": "ID",
+							"isPrimaryKey": true,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": "identity",
+							"isRelated": false
+						},
+						{
+							"fieldName": "status",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "STATUS",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "user_id",
+							"type": "integer",
+							"fullyQualifiedType": "integer",
+							"columnName": "USER_ID",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": true
+						}
+					]
+				},
+				{
+					"fieldName": "product",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "product_id",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": true,
+					"relatedTableName": "PRODUCT",
+					"relatedEntityName": "Product",
+					"columns": [
+						{
+							"fieldName": "id",
+							"type": "integer",
+							"fullyQualifiedType": "integer",
+							"columnName": "ID",
+							"isPrimaryKey": true,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": "identity",
+							"isRelated": false
+						},
+						{
+							"fieldName": "img_url",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "IMG_URL",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "category",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "CATEGORY",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "price",
+							"type": "double",
+							"fullyQualifiedType": "double",
+							"columnName": "PRICE",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 64,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "description",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "DESCRIPTION",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "name",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "NAME",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "availability",
+							"type": "boolean",
+							"fullyQualifiedType": "boolean",
+							"columnName": "AVAILABILITY",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						}
+					]
+				},
+				{
+					"fieldName": "quantity",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "QUANTITY",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				}
+			],
+			"entityName": "Orderdetail",
+			"fullyQualifiedName": "com.eshopping.Orderdetail"
+		}
+	},
+	"cart": {
+		"name": "cart",
+		"type": "Itemorder",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"id": "",
+			"product_id": "",
+			"status": "In Cart",
+			"user.id": "bind:Variables.currentUser.dataSet.id",
+			"quantity": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 100,
+		"designMaxResults": 10,
+		"operation": "read",
+		"startUpdate": true,
+		"autoUpdate": true,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"onBeforeUpdate": "Javascript",
+		"liveSource": "eshopping",
+		"ignoreCase": false,
+		"matchMode": "start",
+		"filterFields": {},
+		"category": "wm.LiveVariable",
+		"_id": "wm-wm.LiveVariable1409048957699",
+		"package": "com.eshopping.Itemorder",
+		"tableName": "ITEMORDER",
+		"properties": [
+			"ITEMORDER_1",
+			"ITEMORDER_2"
+		],
+		"relatedTables": [
+			{
+				"columnName": "product",
+				"relationName": "ITEMORDER_1",
+				"type": "Product",
+				"package": "com.eshopping.ITEMORDER",
+				"watchOn": "EshoppingProductData"
+			},
+			{
+				"columnName": "user",
+				"relationName": "ITEMORDER_2",
+				"type": "User",
+				"package": "com.eshopping.ITEMORDER",
+				"watchOn": "EshoppingUserData"
+			}
+		],
+		"propertiesMap": {
+			"columns": [
+				{
+					"fieldName": "id",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "ID",
+					"isPrimaryKey": true,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": "identity",
+					"isRelated": false
+				},
+				{
+					"fieldName": "product",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "product_id",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": true,
+					"relatedTableName": "PRODUCT",
+					"relatedEntityName": "Product",
+					"columns": [
+						{
+							"fieldName": "id",
+							"type": "integer",
+							"fullyQualifiedType": "integer",
+							"columnName": "ID",
+							"isPrimaryKey": true,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": "identity",
+							"isRelated": false
+						},
+						{
+							"fieldName": "img_url",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "IMG_URL",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "category",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "CATEGORY",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "price",
+							"type": "double",
+							"fullyQualifiedType": "double",
+							"columnName": "PRICE",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 64,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "description",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "DESCRIPTION",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "name",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "NAME",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "availability",
+							"type": "boolean",
+							"fullyQualifiedType": "boolean",
+							"columnName": "AVAILABILITY",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						}
+					]
+				},
+				{
+					"fieldName": "status",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "STATUS",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "user",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "user_id",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": true,
+					"relatedTableName": "USER",
+					"relatedEntityName": "User",
+					"columns": [
+						{
+							"fieldName": "id",
+							"type": "integer",
+							"fullyQualifiedType": "integer",
+							"columnName": "ID",
+							"isPrimaryKey": true,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": "identity",
+							"isRelated": false
+						},
+						{
+							"fieldName": "landmark",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "LANDMARK",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "phone",
+							"type": "integer",
+							"fullyQualifiedType": "integer",
+							"columnName": "PHONE",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "pin",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "PIN",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "email",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "EMAIL",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "street",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "STREET",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "name",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "NAME",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "product_bought",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "PRODUCT_BOUGHT",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "password",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "PASSWORD",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "country",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "COUNTRY",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						},
+						{
+							"fieldName": "city",
+							"type": "string",
+							"fullyQualifiedType": "string",
+							"columnName": "CITY",
+							"isPrimaryKey": false,
+							"notNull": true,
+							"length": 255,
+							"precision": 19,
+							"generator": null,
+							"isRelated": false
+						}
+					]
+				},
+				{
+					"fieldName": "quantity",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "QUANTITY",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				}
+			],
+			"entityName": "Itemorder",
+			"fullyQualifiedName": "com.eshopping.Itemorder"
+		}
+	}
+}

@@ -1,0 +1,36 @@
+<wm-partial data-ng-controller="topnavPageController" name="topnav" type="top-nav">
+    <wm-navbar>
+        <wm-nav name="navactionsprimary" type="navbar" class="navbar-left">
+            <wm-nav-item name="topLink1" data-ng-click="navigateToPage($event, 'Main', this)">
+                <wm-anchor caption="HOME" name="homelink" iconclass="glyphicon glyphicon-home" iconmargin="3px" on-click="goToPage_Main"
+                           class="top-link "></wm-anchor>
+            </wm-nav-item>
+            <wm-nav-item name="topLink2" data-ng-click="navigateToPage($event, 'Category', this)">
+                <wm-anchor caption="PRODUCTS" name="productslink" iconclass="glyphicon glyphicon-tags" iconmargin="3px"
+                           on-click="goToPage_Category" class="top-link"></wm-anchor>
+            </wm-nav-item>
+            <wm-nav-item ng-if="isUserAuthenticated == false" name="listitem3">
+                <wm-anchor class="top-link" caption="LOGIN" name="loginlink" on-click="CommonLoginDialog.show"
+                           iconclass="glyphicon glyphicon-log-in" iconmargin="3px"></wm-anchor>
+            </wm-nav-item>
+        </wm-nav>
+        <wm-nav name="navactionssecondary" ng-if="isUserAuthenticated" type="navbar" class="navbar-right">
+            <wm-nav-item name="topLink3" data-ng-click="navigateToPage($event, 'Cart', this)">
+                <wm-anchor caption="MY CART" class="top-link" name="cartlink" iconclass="glyphicon glyphicon-shopping-cart" iconmargin="3px"
+                           on-click="goToPage_Cart"></wm-anchor>
+            </wm-nav-item>
+            <wm-nav-item name="topLink4" data-ng-click="navigateToPage($event, 'Orders', this)">
+                <wm-anchor caption="MY ORDERS" class="top-link" name="orderslink" iconclass="glyphicon glyphicon-list-alt" iconmargin="3px"
+                           on-click="goToPage_Orders"></wm-anchor>
+            </wm-nav-item>
+            <wm-nav-item name="topLink5" data-ng-click="navigateToPage($event, 'Profile', this)">
+                <wm-anchor caption="MY PROFILE" class="top-link" name="profilelink" iconclass="glyphicon glyphicon-user" iconmargin="3px"
+                           on-click="goToPage_Profile"></wm-anchor>
+            </wm-nav-item>
+            <wm-nav-item name="topLink7">
+                <wm-anchor caption="LOGOUT" class="top-link" name="logoutlink" on-click="logoutVariable"
+                           iconclass="glyphicon glyphicon-log-out" iconmargin="3px"></wm-anchor>
+            </wm-nav-item>
+        </wm-nav>
+    </wm-navbar>
+</wm-partial>

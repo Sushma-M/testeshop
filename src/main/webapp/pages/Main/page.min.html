@@ -1,0 +1,604 @@
+<style id="Main.css">
+.products-list {
+    max-height: 210px !important;
+    overflow: hidden;
+}
+
+.products-list .app-list-item {
+    background: white;
+}
+
+.list-product-thumb {
+    max-width: 100%;
+    max-height: 4em;
+    padding: 0.25em;
+}
+.dealsBanner {
+    border: 1px #ccc solid;
+    background: #f7f7f7;
+    vertical-align: middle;
+    text-align: center;
+    height: 11em;
+}
+.dealsBanner img {
+    width: 100%;
+}
+.dealsBanner div.app-view {
+    background-size: 100% 100%;
+}
+.productCategoryListing {
+    background: #eee;
+    margin-bottom: 0.5em;
+}
+.prodcategory {
+    border: 1px #ccc solid;
+}
+.productCategoryListing .prodcategory div.app-column {
+    float: left;
+    padding: 0 8px;
+    text-align: center;
+}
+.productCategoryListing .app-list-item {
+    border: 1px dotted #e3e3e3;
+    height: 5em;
+}
+.productCategoryListing .app-list-item .app-label {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.prodCategoryBanner {
+    border: 2px solid transparent;
+}
+.prodCategoryBanner:hover {
+    border: 2px solid #ffd926;
+}
+</style>
+<script id="Main.js">
+Application.$controller("MainPageController", ['$rootScope', '$scope', '$timeout',
+    function ($rootScope, $scope, $timeout) {
+        "use strict";
+
+        /** This is a callback function, that is called after a page is rendered.*/
+        $scope.onPageReady = function () {
+            $rootScope.pageLoading = false;
+        };
+
+        $scope.cameras_listonBeforeUpdate = function (variable, data) {
+            WM.forEach(data, function (camera) {
+                camera.imgUrl = "http://wmstudio-apps.s3.amazonaws.com/eshop/Products/Thumbnails" + camera.imgUrl;
+            });
+            return data;
+        };
+
+        $scope.smartphones_listonBeforeUpdate = function (variable, data) {
+            WM.forEach(data, function (phone) {
+                phone.imgUrl = "http://wmstudio-apps.s3.amazonaws.com/eshop/Products/Thumbnails" + phone.imgUrl;
+            });
+            return data;
+        };
+
+        $scope.laptops_listonBeforeUpdate = function (variable, data) {
+            WM.forEach(data, function (laptop) {
+                laptop.imgUrl = "http://wmstudio-apps.s3.amazonaws.com/eshop/Products/Thumbnails" + laptop.imgUrl;
+            });
+            return data;
+        };
+    }
+    ]);
+
+
+Application.$controller("smartphoneslistController", ["$scope",
+    function ($scope) {
+        "use strict";
+        $scope.ctrlScope = $scope;
+    }
+]);
+
+Application.$controller("cameraslistController", ["$scope",
+    function ($scope) {
+        "use strict";
+        $scope.ctrlScope = $scope;
+    }
+]);
+
+Application.$controller("laptopslistController", ["$scope",
+    function ($scope) {
+        "use strict";
+        $scope.ctrlScope = $scope;
+    }
+]);
+</script>
+<script id="Main.variables.json">
+var _MainPage_Variables_ ={
+	"cameras_list": {
+		"name": "cameras_list",
+		"type": "Product",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"id": "",
+			"img_url": "",
+			"category": "Cameras",
+			"price": "",
+			"description": "",
+			"name": "",
+			"availability": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 3,
+		"designMaxResults": 3,
+		"operation": "read",
+		"startUpdate": true,
+		"autoUpdate": true,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"onBeforeUpdate": "Javascript",
+		"liveSource": "eshopping",
+		"ignoreCase": false,
+		"matchMode": "start",
+		"filterFields": {},
+		"category": "wm.LiveVariable",
+		"_id": "wm-wm.LiveVariable1409047371127",
+		"package": "com.eshopping.Product",
+		"tableName": "PRODUCT",
+		"propertiesMap": {
+			"columns": [
+				{
+					"fieldName": "id",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "ID",
+					"isPrimaryKey": true,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": "identity",
+					"isRelated": false
+				},
+				{
+					"fieldName": "imgUrl",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "IMG_URL",
+					"isPrimaryKey": false,
+					"notNull": false,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "category",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "CATEGORY",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "price",
+					"type": "double",
+					"fullyQualifiedType": "double",
+					"columnName": "PRICE",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 64,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "description",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "DESCRIPTION",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "name",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "NAME",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "availability",
+					"type": "boolean",
+					"fullyQualifiedType": "boolean",
+					"columnName": "AVAILABILITY",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				}
+			],
+			"entityName": "Product",
+			"fullyQualifiedName": "com.eshopping.Product"
+		}
+	},
+	"laptops_list": {
+		"name": "laptops_list",
+		"type": "Product",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"id": "",
+			"img_url": "",
+			"category": "Laptops",
+			"price": "",
+			"description": "",
+			"name": "",
+			"availability": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 3,
+		"designMaxResults": 3,
+		"operation": "read",
+		"startUpdate": true,
+		"autoUpdate": true,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"onBeforeUpdate": "Javascript",
+		"liveSource": "eshopping",
+		"ignoreCase": false,
+		"matchMode": "start",
+		"filterFields": {},
+		"category": "wm.LiveVariable",
+		"_id": "wm-wm.LiveVariable1409047457549",
+		"package": "com.eshopping.Product",
+		"tableName": "PRODUCT",
+		"propertiesMap": {
+			"columns": [
+				{
+					"fieldName": "id",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "ID",
+					"isPrimaryKey": true,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": "identity",
+					"isRelated": false
+				},
+				{
+					"fieldName": "imgUrl",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "IMG_URL",
+					"isPrimaryKey": false,
+					"notNull": false,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "category",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "CATEGORY",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "price",
+					"type": "double",
+					"fullyQualifiedType": "double",
+					"columnName": "PRICE",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 64,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "description",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "DESCRIPTION",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "name",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "NAME",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "availability",
+					"type": "boolean",
+					"fullyQualifiedType": "boolean",
+					"columnName": "AVAILABILITY",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				}
+			],
+			"entityName": "Product",
+			"fullyQualifiedName": "com.eshopping.Product"
+		}
+	},
+	"smartphones_list": {
+		"name": "smartphones_list",
+		"type": "Product",
+		"isList": false,
+		"owner": "Page",
+		"dataSet": {
+			"dataValue": ""
+		},
+		"dataBinding": {
+			"id": "",
+			"img_url": "",
+			"category": "Smartphones",
+			"price": "",
+			"description": "",
+			"name": "",
+			"availability": ""
+		},
+		"saveInPhonegap": false,
+		"firstRow": 0,
+		"maxResults": 3,
+		"designMaxResults": 3,
+		"operation": "read",
+		"startUpdate": true,
+		"autoUpdate": true,
+		"inFlightBehavior": "executeLast",
+		"transformationRequired": false,
+		"onBeforeUpdate": "Javascript",
+		"liveSource": "eshopping",
+		"ignoreCase": false,
+		"matchMode": "start",
+		"filterFields": {},
+		"category": "wm.LiveVariable",
+		"_id": "wm-wm.LiveVariable1409047529387",
+		"package": "com.eshopping.Product",
+		"tableName": "PRODUCT",
+		"propertiesMap": {
+			"columns": [
+				{
+					"fieldName": "id",
+					"type": "integer",
+					"fullyQualifiedType": "integer",
+					"columnName": "ID",
+					"isPrimaryKey": true,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": "identity",
+					"isRelated": false
+				},
+				{
+					"fieldName": "imgUrl",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "IMG_URL",
+					"isPrimaryKey": false,
+					"notNull": false,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "category",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "CATEGORY",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "price",
+					"type": "double",
+					"fullyQualifiedType": "double",
+					"columnName": "PRICE",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 64,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "description",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "DESCRIPTION",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "name",
+					"type": "string",
+					"fullyQualifiedType": "string",
+					"columnName": "NAME",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				},
+				{
+					"fieldName": "availability",
+					"type": "boolean",
+					"fullyQualifiedType": "boolean",
+					"columnName": "AVAILABILITY",
+					"isPrimaryKey": false,
+					"notNull": true,
+					"length": 255,
+					"precision": 19,
+					"generator": null,
+					"isRelated": false
+				}
+			],
+			"entityName": "Product",
+			"fullyQualifiedName": "com.eshopping.Product"
+		}
+	}
+}
+</script>
+<script id="Main.html" type="text/ng-template">
+<wm-page layouttype="one-column" columns="1" data-ng-controller="MainPageController" name="MainPage">
+  <wm-header content="header" name="header" backgroundcolor="#005387" class="eshop-header" height="6em"></wm-header>
+  <wm-top-nav name="navbarprimary" class="eshop-menu" backgroundcolor="#0a3151" content="topnav"></wm-top-nav>
+  <wm-content name="content1">
+    <wm-page-content columnwidth="12" name="MainPageContent">
+      <wm-label caption="Deals of the Day" fontsize="20" name="Heading" width="100%"></wm-label>
+      <wm-carousel name="carousel1" height="170">
+        <wm-carousel-content name="carousel_content1">
+          <wm-container backgroundimage="resources/images/imagelists/cameras_banner.png" backgroundrepeat="no-repeat" name="container1" height="100%"></wm-container>
+        </wm-carousel-content>
+        <wm-carousel-content name="carousel_content2">
+          <wm-container backgroundimage="resources/images/imagelists/phones_banner.png" backgroundrepeat="no-repeat" name="container2" height="100%"></wm-container>
+        </wm-carousel-content>
+        <wm-carousel-content name="carousel_content3">
+          <wm-container backgroundimage="resources/images/imagelists/peripherals_banner.png" backgroundrepeat="no-repeat" name="container3" height="100%"></wm-container>
+        </wm-carousel-content>
+      </wm-carousel>
+      <wm-label caption="Hot Picks" fontsize="20" name="Heading" width="100%"></wm-label>
+      <wm-layoutgrid class="productCategoryListing" name="productCategoryListing">
+        <wm-gridrow name="gridrow3">
+          <wm-gridcolumn name="gridcolumn5" class="prodcategory col-sm-4">
+            <a href="#/Category/Smartphones">
+              <wm-picture name="Smart Phones" class="prodCategoryBanner" picturesource="resources/images/imagelists/smartphones_category.png" width="100%" cursor="pointer"></wm-picture>
+            </a>
+            <wm-livelist name="smartphoneslist" data-ng-controller="smartphoneslistController" class="products-list" dataset="bind:Variables.smartphones_list.dataSet" cursor="pointer" listclass="list-group">
+              <wm-listtemplate name="listtemplate1" layout="media">
+                <a href="#/Products/{{item.id}}">
+                  <wm-layoutgrid>
+                    <wm-gridrow>
+                      <wm-gridcolumn columnwidth="4" class="col-xs-4" name="column3">
+                        <wm-picture name="picture5" class="list-product-thumb" picturesource="bind:Variables.smartphones_list.dataSet.imgUrl"></wm-picture>
+                      </wm-gridcolumn>
+                      <wm-gridcolumn columnwidth="8" class="col-xs-8" name="column2">
+                        <wm-label name="phonename" caption="bind:Variables.smartphones_list.dataSet.name" width="100%"></wm-label>
+                        <wm-label name="phonecurr" caption="$"></wm-label>
+                        <wm-label name="phoneprice" caption="bind:Variables.smartphones_list.dataSet.price"></wm-label>
+                      </wm-gridcolumn>
+                    </wm-gridrow>
+                  </wm-layoutgrid>
+                </a>
+              </wm-listtemplate>
+            </wm-livelist>
+          </wm-gridcolumn>
+          <wm-gridcolumn name="gridcolumn6" class="prodcategory col-sm-4">
+            <a href="#/Category/Cameras">
+              <wm-picture name="Cameras" class="prodCategoryBanner" picturesource="resources/images/imagelists/cameras_category.png" width="100%" cursor="pointer"></wm-picture>
+            </a>
+            <wm-livelist name="cameraslist" data-ng-controller="cameraslistController" class="products-list" dataset="bind:Variables.cameras_list.dataSet" cursor="pointer" listclass="list-group">
+              <wm-listtemplate name="listtemplate2">
+                <a href="#/Products/{{item.id}}">
+                  <wm-layoutgrid>
+                    <wm-gridrow>
+                      <wm-gridcolumn columnwidth="4" class="col-xs-4" name="column4">
+                        <wm-picture name="picture6" class="list-product-thumb" picturesource="bind:Variables.cameras_list.dataSet.imgUrl"></wm-picture>
+                      </wm-gridcolumn>
+                      <wm-gridcolumn columnwidth="8" class="col-xs-8" name="column5">
+                        <wm-label name="camerasname" caption="bind:Variables.cameras_list.dataSet.name" width="100%"></wm-label>
+                        <wm-label name="camerascurr" caption="$"></wm-label>
+                        <wm-label name="camerasprice" caption="bind:Variables.cameras_list.dataSet.price"></wm-label>
+                      </wm-gridcolumn>
+                    </wm-gridrow>
+                  </wm-layoutgrid>
+                </a>
+              </wm-listtemplate>
+            </wm-livelist>
+          </wm-gridcolumn>
+          <wm-gridcolumn name="gridcolumn7" class="prodcategory col-sm-4">
+            <a href="#/Category/Laptops">
+              <wm-picture name="Laptops" class="prodCategoryBanner" picturesource="resources/images/imagelists/laptops_category.png" width="100%" cursor="pointer"></wm-picture>
+            </a>
+            <wm-livelist name="laptopslist" data-ng-controller="laptopslistController" class="products-list" dataset="bind:Variables.laptops_list.dataSet" cursor="pointer" listclass="list-group">
+              <wm-listtemplate name="listtemplate3">
+                <a href="#/Products/{{item.id}}">
+                  <wm-layoutgrid>
+                    <wm-gridrow>
+                      <wm-gridcolumn columnwidth="4" class="col-xs-4" name="column6">
+                        <wm-picture name="picture7" class="list-product-thumb" picturesource="bind:Variables.laptops_list.dataSet.imgUrl"></wm-picture>
+                      </wm-gridcolumn>
+                      <wm-gridcolumn columnwidth="8" class="col-xs-8" name="column7">
+                        <wm-label name="laptopsname" caption="bind:Variables.laptops_list.dataSet.name" width="100%"></wm-label>
+                        <wm-label name="laptopscurr" caption="$"></wm-label>
+                        <wm-label name="laptopsprice" caption="bind:Variables.laptops_list.dataSet.price"></wm-label>
+                      </wm-gridcolumn>
+                    </wm-gridrow>
+                  </wm-layoutgrid>
+                </a>
+              </wm-listtemplate>
+            </wm-livelist>
+          </wm-gridcolumn>
+        </wm-gridrow>
+      </wm-layoutgrid>
+      <wm-label caption="Deals" fontsize="20" name="Heading" width="100%"></wm-label>
+      <wm-layoutgrid name="layoutgrid3" height="auto" backgroundcolor="#e3e3e3" bordercolor="#c1cfe3" borderstyle="solid" bordertop="2" borderright="2" borderleft="2" borderbottom="2">
+        <wm-gridrow name="gridrow3">
+          <wm-gridcolumn name="gridcolumn6">
+            <a href="#/Category/Accessories">
+              <wm-picture name="Accessories" picturesource="resources/images/imagelists/accessories__category.png" width="80%" cursor="pointer"></wm-picture>
+            </a>
+          </wm-gridcolumn>
+          <wm-gridcolumn name="gridcolumn15">
+            <a href="#/Category/Peripherals">
+              <wm-picture name="Peripherals" picturesource="resources/images/imagelists/peripherals_category.png" width="80%" cursor="pointer"></wm-picture>
+            </a>
+          </wm-gridcolumn>
+        </wm-gridrow>
+      </wm-layoutgrid>
+    </wm-page-content>
+  </wm-content>
+  <wm-footer name="footer" content="footer"></wm-footer>
+</wm-page>
+</script>

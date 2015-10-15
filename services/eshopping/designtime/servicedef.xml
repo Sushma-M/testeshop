@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="eshopping" CRUDService="true" type="DataService" springFile="eshopping.spring.xml">
+    <dataobjects>
+        <dataobject javaType="com.eshopping.Itemorder">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="product" typeRef="com.eshopping.Product" isList="false" allowNull="false"/>
+            <element name="user" typeRef="com.eshopping.User" isList="false" allowNull="false"/>
+            <element name="status" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="quantity" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+        </dataobject>
+        <dataobject javaType="com.eshopping.Product">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="imgUrl" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="category" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="price" typeRef="java.lang.Double" isList="false" allowNull="false"/>
+            <element name="description" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="name" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="availability" typeRef="java.lang.Boolean" isList="false" allowNull="false"/>
+            <element name="itemorders" typeRef="com.eshopping.Itemorder" isList="true" allowNull="true"/>
+            <element name="orderdetails" typeRef="com.eshopping.Orderdetail" isList="true" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.eshopping.User">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="landmark" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="phone" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="pin" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="email" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="street" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="name" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="productBought" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="password" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="country" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="city" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="itemorders" typeRef="com.eshopping.Itemorder" isList="true" allowNull="true"/>
+            <element name="productorders" typeRef="com.eshopping.Productorder" isList="true" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.eshopping.Productorder">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="user" typeRef="com.eshopping.User" isList="false" allowNull="false"/>
+            <element name="status" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="orderdetails" typeRef="com.eshopping.Orderdetail" isList="true" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.eshopping.Orderdetail">
+            <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="product" typeRef="com.eshopping.Product" isList="false" allowNull="false"/>
+            <element name="productorder" typeRef="com.eshopping.Productorder" isList="false" allowNull="false"/>
+            <element name="quantity" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+        </dataobject>
+    </dataobjects>
+</service>

@@ -1,0 +1,51 @@
+<wm-page layouttype="one-column" columns="1" data-ng-controller="OrdersPageController" name="OrderPage">
+  <wm-header content="header" name="header" backgroundcolor="#005387" class="eshop-header" height="6em"></wm-header>
+  <wm-top-nav name="navbarprimary" class="eshop-menu" backgroundcolor="#0a3151" content="topnav"></wm-top-nav>
+  <wm-content name="content1" height="100%">
+    <wm-page-content columnwidth="12" name="OrderPageContent">
+      <wm-label caption="No Orders" name="no_orders_text" marginunit="em" fontsize="2" fontunit="em" show="false"></wm-label>
+      <wm-label caption="My Orders" name="my_orders_text" marginunit="em" fontsize="2" fontunit="em" show="false"></wm-label>
+      <wm-layoutgrid name="layoutgrid1" class="well">
+        <wm-gridrow name="row2">
+          <wm-gridcolumn columnwidth="2" name="gridcolumn1">
+            <wm-label name="order_id" caption="ID"></wm-label>
+          </wm-gridcolumn>
+          <wm-gridcolumn columnwidth="6" name="gridcolumn2">
+            <wm-label name="order_items_name" caption="Product Name"></wm-label>
+          </wm-gridcolumn>
+          <wm-gridcolumn columnwidth="2" name="gridcolumn3">
+            <wm-label name="order_items_quantity" caption="Quantity"></wm-label>
+          </wm-gridcolumn>
+          <wm-gridcolumn columnwidth="1" name="gridcolumn4">
+            <wm-label name="order_items_status" caption="Status"></wm-label>
+          </wm-gridcolumn>
+          <wm-gridcolumn columnwidth="1" name="gridcolumn5"></wm-gridcolumn>
+        </wm-gridrow>
+      </wm-layoutgrid>
+      <wm-livelist listclass="list-group" itemclass="list-group-item" name="ordersList" scopedataset="itemOrders">
+        <wm-listtemplate layout="panel" name="listtemplate1">
+          <wm-layoutgrid name="layoutgrid1">
+            <wm-gridrow name="gridrow1">
+              <wm-gridcolumn columnwidth="2" name="gridcolumn6">
+                <wm-label name="order_id" caption="{{item.productorder.id}}"></wm-label>
+              </wm-gridcolumn>
+              <wm-gridcolumn columnwidth="6" name="gridcolumn7">
+                <wm-label name="order_items_name" caption="{{item.product.name}}"></wm-label>
+              </wm-gridcolumn>
+              <wm-gridcolumn columnwidth="2" name="gridcolumn8">
+                <wm-label name="order_items_quantity" caption="{{item.quantity}}"></wm-label>
+              </wm-gridcolumn>
+              <wm-gridcolumn columnwidth="1" name="gridcolumn9">
+                <wm-label name="order_items_status" caption="{{item.productorder.status}}"></wm-label>
+              </wm-gridcolumn>
+              <wm-gridcolumn columnwidth="1" name="gridcolumn10">
+                <wm-button name="orderCancel" class="orderCancel" hint="Cancel Order" iconclass="glyphicon glyphicon-remove" show="{{item.productorder.status === 'Ordered' || 'Shipped'}}" on-click="orderCancelClick($event, $scope)" caption="" orderid="{{item.productorder.id}}"></wm-button>
+              </wm-gridcolumn>
+            </wm-gridrow>
+          </wm-layoutgrid>
+        </wm-listtemplate>
+      </wm-livelist>
+    </wm-page-content>
+  </wm-content>
+  <wm-footer name="footer" content="footer"></wm-footer>
+</wm-page>

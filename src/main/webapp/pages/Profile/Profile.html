@@ -1,0 +1,56 @@
+<wm-page layouttype="one-column" columns="1" data-ng-controller="ProfilePageController" name="ProfilePage">
+  <wm-header content="header" name="header" backgroundcolor="#005387" class="eshop-header" height="6em"></wm-header>
+  <wm-top-nav name="navbarprimary" class="eshop-menu" backgroundcolor="#0a3151" content="topnav"></wm-top-nav>
+  <wm-content name="content1">
+    <wm-page-content columnwidth="12" name="ProfilePageContent">
+      <wm-form name="profile" method="get" title="Profile" class="panel-default">
+        <wm-message name="successSaveMsg" class="save-msg" show="false" caption="Your changes have been saved successfully"></wm-message>
+        <wm-message name="failureSaveMsg" class="save-msg" type="error" show="false" caption="Invalid data provided"></wm-message>
+        <wm-composite name="Name">
+          <wm-label class="col-md-3" name="Name" caption="Name"></wm-label>
+          <wm-container class="col-md-9" name="container1">
+            <wm-text name="NameVal" datavalue="bind:Variables.currentUser.dataSet.name"></wm-text>
+          </wm-container>
+        </wm-composite>
+        <wm-composite name="Phone">
+          <wm-label class="col-md-3" name="Phone Number" caption="Phone Number"></wm-label>
+          <wm-container class="col-md-9" name="container2">
+            <wm-text name="PhoneVal" datavalue="bind:Variables.currentUser.dataSet.phone" type="text" on-blur="PhoneValBlur($event, $scope)"></wm-text>
+          </wm-container>
+        </wm-composite>
+        <wm-composite name="street">
+          <wm-label class="col-md-3" name="Street Address" caption="Street Address"></wm-label>
+          <wm-container class="col-md-9" name="container3">
+            <wm-text name="StreetVal" datavalue="bind:Variables.currentUser.dataSet.street"></wm-text>
+          </wm-container>
+        </wm-composite>
+        <wm-composite name="landmark">
+          <wm-label class="col-md-3" name="Landmark" caption="Landmark"></wm-label>
+          <wm-container class="col-md-9" name="container4">
+            <wm-text name="LandmarkVal" datavalue="bind:Variables.currentUser.dataSet.landmark"></wm-text>
+          </wm-container>
+        </wm-composite>
+        <wm-composite name="city">
+          <wm-label class="col-md-3" name="City" caption="City"></wm-label>
+          <wm-container class="col-md-9" name="container5">
+            <wm-text name="CityVal" datavalue="bind:Variables.currentUser.dataSet.city"></wm-text>
+          </wm-container>
+        </wm-composite>
+        <wm-composite name="pin">
+          <wm-label class="col-md-3" name="Pin" caption="Pin"></wm-label>
+          <wm-container class="col-md-9" name="container6">
+            <wm-text name="PinVal" datavalue="bind:Variables.currentUser.dataSet.pin"></wm-text>
+          </wm-container>
+        </wm-composite>
+        <wm-composite name="country">
+          <wm-label class="col-md-3" name="Country" caption="Country"></wm-label>
+          <wm-container class="col-md-9" name="container7">
+            <wm-text name="CountryVal" datavalue="bind:Variables.currentUser.dataSet.country"></wm-text>
+          </wm-container>
+        </wm-composite>
+        <wm-button name="save" textalign="center" class="btn-primary" caption="SAVE CHANGES" on-click="saveClick($event, $scope)"></wm-button>
+      </wm-form>
+    </wm-page-content>
+  </wm-content>
+  <wm-footer name="footer" content="footer"></wm-footer>
+</wm-page>

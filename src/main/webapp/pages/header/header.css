@@ -1,0 +1,9 @@
+.wm-app .app-header {
+    background-color: #005387;
+}
+.wm-app .application-name {
+    vertical-align: bottom;
+    font-weight: bold;
+    font-size: 24px;
+    color: #d1d039;
+}

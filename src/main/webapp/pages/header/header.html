@@ -1,0 +1,13 @@
+<wm-partial data-ng-controller="headerPageController" name="header" type="header">
+    <wm-layoutgrid name="layoutgrid23" height="100%">
+        <wm-gridrow name="gridrow28">
+            <wm-gridcolumn name="gridcolumn68">
+                <wm-picture name="picture1" picturesource="bind:Variables.eshopIcon.dataSet.dataValue"></wm-picture>
+                <wm-label name="applicationName" on-click="appName" caption="bind:Variables.appName.dataSet.dataValue"class="application-name appName"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn name="gridcolumn70" horizontalalign="right" paddingtop="1" paddingunit="em" paddingright=".5">
+                <wm-search name="productSearch" class="product-search" dataset="bind:Variables.productSearch.dataSet.data" searchkey="name" displaylabel="name" displayimagesrc="imgUrl" data-ng-click="activateProductSearch($event)" on-submit="productSearchSubmit($event, $scope)"></wm-search>
+            </wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+</wm-partial>

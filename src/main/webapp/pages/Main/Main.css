@@ -1,0 +1,53 @@
+.products-list {
+    max-height: 210px !important;
+    overflow: hidden;
+}
+
+.products-list .app-list-item {
+    background: white;
+}
+
+.list-product-thumb {
+    max-width: 100%;
+    max-height: 4em;
+    padding: 0.25em;
+}
+.dealsBanner {
+    border: 1px #ccc solid;
+    background: #f7f7f7;
+    vertical-align: middle;
+    text-align: center;
+    height: 11em;
+}
+.dealsBanner img {
+    width: 100%;
+}
+.dealsBanner div.app-view {
+    background-size: 100% 100%;
+}
+.productCategoryListing {
+    background: #eee;
+    margin-bottom: 0.5em;
+}
+.prodcategory {
+    border: 1px #ccc solid;
+}
+.productCategoryListing .prodcategory div.app-column {
+    float: left;
+    padding: 0 8px;
+    text-align: center;
+}
+.productCategoryListing .app-list-item {
+    border: 1px dotted #e3e3e3;
+    height: 5em;
+}
+.productCategoryListing .app-list-item .app-label {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.prodCategoryBanner {
+    border: 2px solid transparent;
+}
+.prodCategoryBanner:hover {
+    border: 2px solid #ffd926;
+}

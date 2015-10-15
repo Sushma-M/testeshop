@@ -1,0 +1,394 @@
+<style id="Products.css">
+
+</style>
+<script id="Products.js">
+Application.$controller("ProductsPageController", ["$rootScope", "$scope", "DialogService", "wmToaster", "$location",
+    function($rootScope, $scope, DialogService, wmToaster, $location) {
+        "use strict";
+
+        function setActiveProduct(selectedProduct) {
+            if (selectedProduct && $scope.Variables.selectedItem) {
+                $scope.Variables.selectedItem.dataSet = selectedProduct;
+
+                if (!$scope.Variables.selectedItem.dataSet) {
+                    wmToaster.show('error', "Error", "No such product in catalog");
+                    $location.path('Category');
+                }
+            }
+        }
+
+        /** This is a callback function, that is called after a page is rendered.*/
+        $scope.onPageReady = function() {
+            $rootScope.pageLoading = false;
+        };
+
+        /**This is a callback function, that is called after the page variables are loaded. */
+        $scope.onPageVariablesReady = function() {
+            $scope.Variables.selectedProductId.dataSet.dataValue = $scope.activeProductId;
+            if ($scope.Variables.currentUser.dataSet) {
+                delete $scope.Variables.currentUser.dataSet.dataValue;
+            }
+        };
+
+        /**This is a callback function, when the page is loaded with the url route parameters. */
+        $scope.handleRoute = function(productId) {
+            $scope.activeProductId = +productId;
+        };
+
+        /*method to handle add to cart click and insert item to db*/
+        $scope.addToCartClick = function() {
+            $rootScope.Variables.currentProduct.dataSet = $scope.Variables.selectedItem.dataSet;
+            if ($rootScope.isUserAuthenticated) {
+                $rootScope.pageLoading = true;
+                $rootScope.addItemToCart();
+            } else {
+                $rootScope.loginBeforeCart = true;
+                DialogService.showDialog("CommonLoginDialog");
+            }
+        };
+
+
+        $scope.selectedProductonSuccess = function(variable, data) {
+            setActiveProduct(data[0]);
+        };
+
+    }
+]);
+</script>
+<script id="Products.variables.json">
+var _ProductsPage_Variables_ ={
+    "selectedItem": {
+        "name": "selectedItem",
+        "type": "string",
+        "isList": false,
+        "owner": "Page",
+        "dataSet": {
+            "name": "",
+            "price": "",
+            "description": "",
+            "imgUrl": "",
+            "availability": ""
+        },
+        "dataBinding": {
+            "dataValue": ""
+        },
+        "saveInPhonegap": false,
+        "category": "wm.Variable",
+        "_id": "wm-wm.Variable1394789038701"
+    },
+    "allProducts": {
+        "name": "allProducts",
+        "type": "Product",
+        "isList": false,
+        "owner": "Page",
+        "dataSet": {
+            "dataValue": ""
+        },
+        "dataBinding": {
+            "id": "",
+            "img_url": "",
+            "category": "",
+            "price": "",
+            "description": "",
+            "name": "",
+            "availability": ""
+        },
+        "saveInPhonegap": false,
+        "firstRow": 0,
+        "maxResults": 1000,
+        "designMaxResults": 10,
+        "operation": "read",
+        "startUpdate": true,
+        "autoUpdate": true,
+        "inFlightBehavior": "executeLast",
+        "transformationRequired": false,
+        "onSuccess": "Javascript",
+        "liveSource": "eshopping",
+        "ignoreCase": false,
+        "matchMode": "start",
+        "filterFields": {},
+        "category": "wm.LiveVariable",
+        "_id": "wm-wm.LiveVariable1409047245352",
+        "package": "com.eshopping.Product",
+        "tableName": "PRODUCT",
+        "propertiesMap": {
+            "columns": [
+                {
+                    "fieldName": "id",
+                    "type": "integer",
+                    "fullyQualifiedType": "integer",
+                    "columnName": "ID",
+                    "isPrimaryKey": true,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": "identity",
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "imgUrl",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "IMG_URL",
+                    "isPrimaryKey": false,
+                    "notNull": false,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "category",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "CATEGORY",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "price",
+                    "type": "double",
+                    "fullyQualifiedType": "double",
+                    "columnName": "PRICE",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 64,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "description",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "DESCRIPTION",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "name",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "NAME",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "availability",
+                    "type": "boolean",
+                    "fullyQualifiedType": "boolean",
+                    "columnName": "AVAILABILITY",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                }
+            ],
+            "primaryKeys": [
+                "id"
+            ],
+            "entityName": "Product",
+            "fullyQualifiedName": "com.eshopping.Product"
+        }
+    },
+    "selectedProduct": {
+        "name": "selectedProduct",
+        "type": "Product",
+        "isList": false,
+        "owner": "Page",
+        "dataSet": {
+            "dataValue": ""
+        },
+        "dataBinding": {
+            "id": "bind:Variables.selectedProductId.dataSet.dataValue",
+            "imgUrl": "",
+            "category": "",
+            "price": "",
+            "description": "",
+            "name": "",
+            "availability": ""
+        },
+        "saveInPhonegap": false,
+        "firstRow": 0,
+        "maxResults": 20,
+        "designMaxResults": 10,
+        "operation": "read",
+        "startUpdate": true,
+        "autoUpdate": false,
+        "inFlightBehavior": "executeLast",
+        "transformationRequired": false,
+        "onSuccess": "Javascript",
+        "liveSource": "eshopping",
+        "ignoreCase": false,
+        "matchMode": "start",
+        "filterFields": {},
+        "category": "wm.LiveVariable",
+        "_id": "wm-wm.LiveVariable1417497060903",
+        "package": "com.eshopping.Product",
+        "tableName": "PRODUCT",
+        "propertiesMap": {
+            "columns": [
+                {
+                    "fieldName": "id",
+                    "type": "integer",
+                    "fullyQualifiedType": "integer",
+                    "columnName": "ID",
+                    "isPrimaryKey": true,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": "identity",
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "imgUrl",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "IMG_URL",
+                    "isPrimaryKey": false,
+                    "notNull": false,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "category",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "CATEGORY",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "price",
+                    "type": "double",
+                    "fullyQualifiedType": "double",
+                    "columnName": "PRICE",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 64,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "description",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "DESCRIPTION",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "name",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "NAME",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "availability",
+                    "type": "boolean",
+                    "fullyQualifiedType": "boolean",
+                    "columnName": "AVAILABILITY",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                }
+            ],
+            "primaryKeys": [
+                "id"
+            ],
+            "entityName": "Product",
+            "fullyQualifiedName": "com.eshopping.Product"
+        }
+    },
+    "selectedProductId": {
+        "name": "selectedProductId",
+        "type": "number",
+        "isList": false,
+        "owner": "Page",
+        "dataSet": {
+            "dataValue": 0
+        },
+        "dataBinding": {
+            "dataValue": ""
+        },
+        "saveInPhonegap": false,
+        "category": "wm.Variable",
+        "_id": "wm-wm.Variable1417497090790"
+    }
+}
+</script>
+<script id="Products.html" type="text/ng-template">
+<wm-page layouttype="one-column" columns="1" data-ng-controller="ProductsPageController" name="ProductPage">
+  <wm-header content="header" name="header" backgroundcolor="#005387" class="eshop-header" height="6em"></wm-header>
+  <wm-top-nav name="navbarprimary" class="eshop-menu" backgroundcolor="#0a3151" content="topnav"></wm-top-nav>
+  <wm-content name="content1">
+    <wm-page-content columnwidth="12" name="ProductPageContent">
+      <wm-layoutgrid name="productDetails">
+        <wm-gridrow name="gridrow2">
+          <wm-gridcolumn name="gridcolumn4" class="product-image-container" columnwidth="4" on-click="selectedItem" horizontalalign="center">
+            <wm-picture name="picture2" maxwidth="100%" picturesource="bind:'http://wmstudio-apps.s3.amazonaws.com/eshop/Products/Images' + Variables.selectedItem.dataSet.imgUrl"></wm-picture>
+          </wm-gridcolumn>
+          <wm-gridcolumn name="gridcolumn6" columnwidth="8" paddingleft="1" paddingunit="em">
+            <wm-label name="ProductName" caption="bind:Variables.selectedItem.dataSet.name" width="100%" fontsize="2" fontunit="em" marginbottom="1" marginunit="em"></wm-label>
+            <wm-label name="Availability" class="label label-success" caption="Available" show="bind:Variables.selectedItem.dataSet.availability" fontsize="1.25" fontunit="em"></wm-label>
+            <wm-label name="OutOfStock" class="label label-danger" caption="Out of Stock" show="bind:!Variables.selectedItem.dataSet.availability" fontsize="1.25" fontunit="em"></wm-label>
+            <wm-html height="auto" name="ProductDescription" content="bind:Variables.selectedItem.dataSet.description"  margintop="1" marginunit="em"></wm-html>
+            <wm-label caption="Price: $" fontweight="bold" name="product_currency" fontsize="1.25" fontunit="em" margintop="1" marginunit="em"></wm-label>
+            <wm-label name="ProductPrice" caption="bind:Variables.selectedItem.dataSet.price" fontweight="bold" fontsize="1.25" fontunit="em"></wm-label>
+            <wm-button show="bind:Variables.selectedItem.dataSet.availability" class="btn-primary" name="addToCart" caption="Add to Cart" fontsize="1.5" fontunit="em" on-click="addToCartClick($event, $scope)" iconclass="glyphicon glyphicon-shopping-cart" marginleft="1" marginunit="em"></wm-button>
+          </wm-gridcolumn>
+        </wm-gridrow>
+      </wm-layoutgrid>
+    </wm-page-content>
+  </wm-content>
+  <wm-footer name="footer" content="footer"></wm-footer>
+</wm-page>
+</script>

@@ -1,0 +1,308 @@
+{
+    "selectedItem": {
+        "name": "selectedItem",
+        "type": "string",
+        "isList": false,
+        "owner": "Page",
+        "dataSet": {
+            "name": "",
+            "price": "",
+            "description": "",
+            "imgUrl": "",
+            "availability": ""
+        },
+        "dataBinding": {
+            "dataValue": ""
+        },
+        "saveInPhonegap": false,
+        "category": "wm.Variable",
+        "_id": "wm-wm.Variable1394789038701"
+    },
+    "allProducts": {
+        "name": "allProducts",
+        "type": "Product",
+        "isList": false,
+        "owner": "Page",
+        "dataSet": {
+            "dataValue": ""
+        },
+        "dataBinding": {
+            "id": "",
+            "img_url": "",
+            "category": "",
+            "price": "",
+            "description": "",
+            "name": "",
+            "availability": ""
+        },
+        "saveInPhonegap": false,
+        "firstRow": 0,
+        "maxResults": 1000,
+        "designMaxResults": 10,
+        "operation": "read",
+        "startUpdate": true,
+        "autoUpdate": true,
+        "inFlightBehavior": "executeLast",
+        "transformationRequired": false,
+        "onSuccess": "Javascript",
+        "liveSource": "eshopping",
+        "ignoreCase": false,
+        "matchMode": "start",
+        "filterFields": {},
+        "category": "wm.LiveVariable",
+        "_id": "wm-wm.LiveVariable1409047245352",
+        "package": "com.eshopping.Product",
+        "tableName": "PRODUCT",
+        "propertiesMap": {
+            "columns": [
+                {
+                    "fieldName": "id",
+                    "type": "integer",
+                    "fullyQualifiedType": "integer",
+                    "columnName": "ID",
+                    "isPrimaryKey": true,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": "identity",
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "imgUrl",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "IMG_URL",
+                    "isPrimaryKey": false,
+                    "notNull": false,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "category",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "CATEGORY",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "price",
+                    "type": "double",
+                    "fullyQualifiedType": "double",
+                    "columnName": "PRICE",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 64,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "description",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "DESCRIPTION",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "name",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "NAME",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "availability",
+                    "type": "boolean",
+                    "fullyQualifiedType": "boolean",
+                    "columnName": "AVAILABILITY",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                }
+            ],
+            "primaryKeys": [
+                "id"
+            ],
+            "entityName": "Product",
+            "fullyQualifiedName": "com.eshopping.Product"
+        }
+    },
+    "selectedProduct": {
+        "name": "selectedProduct",
+        "type": "Product",
+        "isList": false,
+        "owner": "Page",
+        "dataSet": {
+            "dataValue": ""
+        },
+        "dataBinding": {
+            "id": "bind:Variables.selectedProductId.dataSet.dataValue",
+            "imgUrl": "",
+            "category": "",
+            "price": "",
+            "description": "",
+            "name": "",
+            "availability": ""
+        },
+        "saveInPhonegap": false,
+        "firstRow": 0,
+        "maxResults": 20,
+        "designMaxResults": 10,
+        "operation": "read",
+        "startUpdate": true,
+        "autoUpdate": false,
+        "inFlightBehavior": "executeLast",
+        "transformationRequired": false,
+        "onSuccess": "Javascript",
+        "liveSource": "eshopping",
+        "ignoreCase": false,
+        "matchMode": "start",
+        "filterFields": {},
+        "category": "wm.LiveVariable",
+        "_id": "wm-wm.LiveVariable1417497060903",
+        "package": "com.eshopping.Product",
+        "tableName": "PRODUCT",
+        "propertiesMap": {
+            "columns": [
+                {
+                    "fieldName": "id",
+                    "type": "integer",
+                    "fullyQualifiedType": "integer",
+                    "columnName": "ID",
+                    "isPrimaryKey": true,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": "identity",
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "imgUrl",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "IMG_URL",
+                    "isPrimaryKey": false,
+                    "notNull": false,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "category",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "CATEGORY",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "price",
+                    "type": "double",
+                    "fullyQualifiedType": "double",
+                    "columnName": "PRICE",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 64,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "description",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "DESCRIPTION",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "name",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "NAME",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                },
+                {
+                    "fieldName": "availability",
+                    "type": "boolean",
+                    "fullyQualifiedType": "boolean",
+                    "columnName": "AVAILABILITY",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false,
+                    "defaultValue": null
+                }
+            ],
+            "primaryKeys": [
+                "id"
+            ],
+            "entityName": "Product",
+            "fullyQualifiedName": "com.eshopping.Product"
+        }
+    },
+    "selectedProductId": {
+        "name": "selectedProductId",
+        "type": "number",
+        "isList": false,
+        "owner": "Page",
+        "dataSet": {
+            "dataValue": 0
+        },
+        "dataBinding": {
+            "dataValue": ""
+        },
+        "saveInPhonegap": false,
+        "category": "wm.Variable",
+        "_id": "wm-wm.Variable1417497090790"
+    }
+}

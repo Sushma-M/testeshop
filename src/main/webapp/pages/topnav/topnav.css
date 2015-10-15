@@ -1,0 +1,13 @@
+.wm-app .navbar {
+    background-color: #0a3151;
+    border: transparent;
+}
+
+.wm-app .navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+
+.wm-app .navbar-default .navbar-nav > li > a.active,
+.wm-app .navbar-default .navbar-nav > li > a:hover {
+    background-color: #d1d039;
+}

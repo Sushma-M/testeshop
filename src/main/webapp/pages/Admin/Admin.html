@@ -1,0 +1,128 @@
+<wm-page layouttype="one-column" columns="1" data-ng-controller="AdminPageController" name="AdminPage">
+    <wm-header name="header" backgroundcolor="#005387" class="eshop-header" height="6em">
+        <wm-layoutgrid name="layoutgrid23" height="100%">
+            <wm-gridrow name="gridrow28">
+                <wm-gridcolumn name="gridcolumn68">
+                    <wm-picture name="picture1" picturesource="bind:Variables.eshopIcon.dataSet.dataValue"></wm-picture>
+                    <wm-label name="applicationName" on-click="appName" caption="bind:Variables.appName.dataSet.dataValue" class="application-name appName"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn name="gridcolumn70" horizontalalign="right"></wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+    </wm-header>
+    <wm-top-nav name="topnav">
+        <wm-navbar>
+            <wm-nav name="topLinks" type="navbar" class="navbar-right">
+                <wm-nav-item name="topLink7">
+                    <wm-anchor caption="LOGOUT" class="top-link" name="logoutlink" on-click="logoutVariable" iconclass="glyphicon glyphicon-log-out" iconmargin="3px"></wm-anchor>
+                </wm-nav-item>
+            </wm-nav>
+        </wm-navbar>
+    </wm-top-nav>
+    <wm-content name="content1">
+      <wm-page-content columnwidth="12" name="AdminPageContent">
+                <wm-tabs name="tabs1" height="auto">
+                    <wm-tabpane name="tabpane1">
+                        <wm-tabheader name="tabheader1" heading="PRODUCTS"></wm-tabheader>
+                        <wm-tabcontent name="tabcontent1">
+                            <wm-livegrid name="livegrid1" service="eshopping@Product" formlayout="dialog">
+                                <wm-grid height="400" deleterow="true" updaterow="true" insertrow="true" gridfirstrowselect="true" name="grid1" dataset="bind:Variables.EshoppingProductData.dataSet" readonlygrid="false">
+                                    <wm-grid-column binding="id" caption="Product ID" type="integer" primary-key="true" generator="identity" readonly="true" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                    <wm-grid-column binding="name" caption="Name" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                    <wm-grid-column binding="price" caption="Price" type="double" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                    <wm-grid-column binding="category" caption="Category" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                    <wm-grid-column binding="description" caption="Description" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="false"></wm-grid-column>
+                                    <wm-grid-column binding="availability" caption="Availability" type="boolean" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="false"></wm-grid-column>
+                                    <wm-grid-action key="addNewRow" label="New" show="true" class="btn-primary" icon="new" action="addNewRow()" type="button"></wm-grid-action>
+                                </wm-grid>
+                                <wm-liveform novalidate="false" name="liveform1" dataset="bind:Variables.EshoppingProductData.dataSet" layout="One Column" title="Add Product" formtype="dialog">
+                                    <wm-form-field key="id" display-name="id" show="true" type="integer" primary-key="true" generator="identity" readonly="true" required="true" placeholder="Readonly field"></wm-form-field>
+                                    <wm-form-field key="imgUrl" display-name="imgUrl" show="true" type="string" primary-key="false" generator="null" readonly="false" required="false" maxvalue="255" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-field key="category" display-name="category" show="true" type="string" primary-key="false" generator="null" readonly="false" required="true" maxvalue="255" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-field key="price" display-name="price" show="true" type="double" primary-key="false" generator="null" readonly="false" required="true" placeholder="Enter value"></wm-form-field>
+                                    <wm-form-field key="description" display-name="description" show="true" type="string" primary-key="false" generator="null" readonly="false" required="true" maxvalue="255" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-field key="name" display-name="name" show="true" type="string" primary-key="false" generator="null" readonly="false" required="true" maxvalue="255" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-field key="availability" display-name="availability" show="true" type="boolean" primary-key="false" generator="null" readonly="false" required="true"></wm-form-field>
+                                    <wm-form-action key="cancel" display-name="cancel" show="true" class="form-cancel" iconclass="glyphicon glyphicon-remove-circle" action="formCancel()" type="button" update-mode="true"></wm-form-action>
+                                    <wm-form-action key="save" display-name="save" show="true" class="form-save btn-success" iconclass="glyphicon glyphicon-save" type="submit" update-mode="true"></wm-form-action>
+                                </wm-liveform>
+                            </wm-livegrid>
+                        </wm-tabcontent>
+                    </wm-tabpane>
+                    <wm-tabpane name="tabpane2">
+                        <wm-tabheader name="tabheader2" heading="USERS"></wm-tabheader>
+                        <wm-tabcontent name="tabcontent2">
+                            <wm-livegrid name="livegrid5" service="eshopping@User" formlayout="dialog">
+                                <wm-grid deleterow="true" updaterow="true" insertrow="true" gridfirstrowselect="true" name="grid5" dataset="bind:Variables.users.dataSet" height="400" readonlygrid="false">
+                                    <wm-grid-column binding="id" caption="User ID" type="integer" primary-key="true" generator="identity" readonly="true" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                    <wm-grid-column binding="name" caption="Name" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                    <wm-grid-column binding="email" caption="Email" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                    <wm-grid-column binding="password" caption="Password" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                    <wm-grid-column binding="phone" caption="Phone" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="false"></wm-grid-column>
+                                    <wm-grid-column binding="street" caption="Street" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="false"></wm-grid-column>
+                                    <wm-grid-column binding="city" caption="City" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="false"></wm-grid-column>
+                                    <wm-grid-column binding="country" caption="Country" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="false"></wm-grid-column>
+                                    <wm-grid-column binding="pin" caption="Pin" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="false"></wm-grid-column>
+                                    <wm-grid-action key="addNewRow" label="New" show="true" class="btn-primary" icon="new" action="addNewRow()" type="button"></wm-grid-action>
+                                </wm-grid>
+                                <wm-liveform novalidate="false" name="liveform5" dataset="bind:Variables.users.dataSet" layout="One Column" title="Add User" formtype="dialog">
+                                    <wm-form-field key="id" display-name="id" show="true" type="integer" primary-key="true" generator="identity" readonly="true" required="true" placeholder="Readonly field"></wm-form-field>
+                                    <wm-form-field key="landmark" display-name="landmark" show="true" type="string" primary-key="false" generator="null" readonly="false" required="true" maxvalue="255" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-field key="phone" display-name="phone" show="true" type="string" primary-key="false" generator="null" readonly="false" required="true" maxvalue="15" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-field key="pin" display-name="pin" show="true" type="string" primary-key="false" generator="null" readonly="false" required="true" maxvalue="255" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-field key="email" display-name="email" show="true" type="string" primary-key="false" generator="null" readonly="false" required="true" maxvalue="255" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-field key="street" display-name="street" show="true" type="string" primary-key="false" generator="null" readonly="false" required="true" maxvalue="255" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-field key="name" display-name="name" show="true" type="string" primary-key="false" generator="null" readonly="false" required="true" maxvalue="255" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-field key="productBought" display-name="productBought" show="true" type="string" primary-key="false" generator="null" readonly="false" required="false" maxvalue="255" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-field key="password" display-name="password" show="true" type="string" primary-key="false" generator="null" readonly="false" required="true" maxvalue="255" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-field key="country" display-name="country" show="true" type="string" primary-key="false" generator="null" readonly="false" required="true" maxvalue="255" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-field key="city" display-name="city" show="true" type="string" primary-key="false" generator="null" readonly="false" required="true" maxvalue="255" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-action key="cancel" display-name="cancel" show="true" class="form-cancel" iconclass="glyphicon glyphicon-remove-circle" action="formCancel()" type="button" update-mode="true"></wm-form-action>
+                                    <wm-form-action key="save" display-name="save" show="true" class="form-save btn-success" iconclass="glyphicon glyphicon-save" type="submit" update-mode="true"></wm-form-action>
+                                </wm-liveform>
+                            </wm-livegrid>
+                        </wm-tabcontent>
+                    </wm-tabpane>
+                    <wm-tabpane name="tabpane3">
+                        <wm-tabheader name="tabheader3" heading="ORDERS"></wm-tabheader>
+                        <wm-tabcontent name="tabcontent3">
+                            <wm-livegrid name="livegrid3" service="eshopping@Productorder" formlayout="dialog">
+                                <wm-grid height="400" deleterow="true" updaterow="true" insertrow="true" gridfirstrowselect="true" name="grid3" dataset="bind:Variables.EshoppingProductorderData.dataSet" readonlygrid="false">
+                                    <wm-grid-column binding="id" caption="Order Id" type="integer" primary-key="true" generator="identity" readonly="true" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                    <wm-grid-column binding="status" caption="Order Status" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                    <wm-grid-column binding="user.email" caption="Customer Email" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                    <wm-grid-column binding="user.name" caption="Customer Name" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="false"></wm-grid-column>
+                                    <wm-grid-action key="addNewRow" label="New" show="true" class="btn-primary" icon="new" action="addNewRow()" type="button"></wm-grid-action>
+                                </wm-grid>
+                                <wm-liveform novalidate="false" name="liveform3" dataset="bind:Variables.EshoppingProductorderData.dataSet" layout="One Column" title="Add Order" formtype="dialog">
+                                    <wm-form-field key="id" display-name="id" show="true" type="integer" primary-key="true" generator="identity" readonly="true" required="true" placeholder="Readonly field"></wm-form-field>
+                                    <wm-form-field key="status" display-name="status" show="true" type="string" primary-key="false" generator="null" readonly="false" required="true" maxvalue="255" placeholder="Enter text"></wm-form-field>
+                                    <wm-form-field key="user" display-name="user" show="true" type="list" primary-key="false" generator="null" value="[object Object]" is-related="true"></wm-form-field>
+                                    <wm-form-action key="cancel" display-name="cancel" show="true" class="form-cancel" iconclass="glyphicon glyphicon-remove-circle" action="formCancel()" type="button" update-mode="true"></wm-form-action>
+                                    <wm-form-action key="save" display-name="save" show="true" class="form-save btn-success" iconclass="glyphicon glyphicon-save" type="submit" update-mode="true"></wm-form-action>
+                                </wm-liveform>
+                            </wm-livegrid>
+                            <wm-livegrid name="livegrid6" service="eshopping@Orderdetail" formlayout="dialog">
+                                <wm-grid height="400" deleterow="true" updaterow="true" insertrow="true" gridfirstrowselect="true" name="grid4" dataset="bind:Variables.EshoppingOrderdetailData.dataSet" readonlygrid="false">
+                                    <wm-grid-column binding="productorder.id" caption="Order Id" type="integer" primary-key="true" generator="identity" readonly="true" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                    <wm-grid-column binding="product.category" caption="Category" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="false"></wm-grid-column>
+                                    <wm-grid-column binding="product.name" caption="Product Name" type="string" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                    <wm-grid-column binding="quantity" caption="Quantity" type="integer" readonly="false" search-placeholder="Search" pcdisplay="true" mobiledisplay="true"></wm-grid-column>
+                                    <wm-grid-action key="addNewRow" label="New" show="true" class="btn-primary" icon="new" action="addNewRow()" type="button"></wm-grid-action>
+                                </wm-grid>
+                                <wm-liveform novalidate="false" name="liveform4" dataset="bind:Variables.EshoppingOrderdetailData.dataSet" layout="One Column" title="Add Order Details" formtype="dialog">
+                                    <wm-form-field key="id" display-name="id" show="true" type="integer" primary-key="true" generator="identity" readonly="true" required="true" placeholder="Readonly field"></wm-form-field>
+                                    <wm-form-field key="productorder" display-name="productorder" show="true" type="list" primary-key="false" generator="null" value="[object Object]" is-related="true"></wm-form-field>
+                                    <wm-form-field key="product" display-name="product" show="true" type="list" primary-key="false" generator="null" value="[object Object]" is-related="true"></wm-form-field>
+                                    <wm-form-field key="quantity" display-name="quantity" show="true" type="integer" primary-key="false" generator="null" readonly="false" required="true" placeholder="Enter value"></wm-form-field>
+                                    <wm-form-action key="cancel" display-name="cancel" show="true" class="form-cancel" iconclass="glyphicon glyphicon-remove-circle" action="formCancel()" type="button" update-mode="true"></wm-form-action>
+                                    <wm-form-action key="save" display-name="save" show="true" class="form-save btn-success" iconclass="glyphicon glyphicon-save" type="submit" update-mode="true"></wm-form-action>
+                                </wm-liveform>
+                            </wm-livegrid>
+                        </wm-tabcontent>
+                    </wm-tabpane>
+                </wm-tabs>
+          </wm-page-content>
+    </wm-content>
+    <wm-footer name="footer" content="footer" height="auto"></wm-footer>
+</wm-page>

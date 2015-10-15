@@ -1,0 +1,182 @@
+<style id="header.css">
+.wm-app .app-header {
+    background-color: #005387;
+}
+.wm-app .application-name {
+    vertical-align: bottom;
+    font-weight: bold;
+    font-size: 24px;
+    color: #d1d039;
+}
+</style>
+<script id="header.js">
+Application.$controller("headerPageController", ["$scope", "$rootScope", "$location", function ($scope, $rootScope, $location) {
+    "use strict";
+
+    $scope.productSearchonBeforeUpdate = function (variable, data) {
+        WM.forEach(data, function (product) {
+            product.imgUrl = "http://wmstudio-apps.s3.amazonaws.com/eshop/Products/Thumbnails" + product.imgUrl;
+        });
+    };
+
+    $scope.activateProductSearch = function ($event) {
+        $event.currentTarget.style.width = "320px";
+    };
+
+    $scope.productSearchSubmit = function ($event) {
+        /*Return if no "item" has been selected in the Search box.*/
+        if (!$event.data.item) {
+            return;
+        }
+
+        $rootScope.selectedItem = $event.data.item;
+        $rootScope.selectedItem.imgUrl = $rootScope.selectedItem.imgUrl.replace("Thumbnails", "Images");
+        $location.path("Products/" + $rootScope.selectedItem.id);
+        $rootScope.pageLoading = true;
+    };
+}]);
+</script>
+<script id="header.variables.json">
+var _headerPage_Variables_ ={
+    "productSearch": {
+        "type": "Product",
+        "isList": false,
+        "owner": "Page",
+        "dataSet": {
+            "dataValue": ""
+        },
+        "dataBinding": {
+            "id": "",
+            "imgUrl": "",
+            "category": "",
+            "price": "",
+            "description": "",
+            "name": "",
+            "availability": ""
+        },
+        "saveInPhonegap": false,
+        "firstRow": 0,
+        "maxResults": 1000,
+        "designMaxResults": 10,
+        "operation": "read",
+        "startUpdate": true,
+        "autoUpdate": true,
+        "inFlightBehavior": "executeLast",
+        "transformationRequired": false,
+        "liveSource": "eshopping",
+        "ignoreCase": false,
+        "matchMode": "start",
+        "onBeforeUpdate": "Javascript",
+        "filterFields": {},
+        "category": "wm.LiveVariable",
+        "_id": "wm-wm.LiveVariable1412747057471",
+        "package": "com.eshopping.Product",
+        "tableName": "PRODUCT",
+        "propertiesMap": {
+            "columns": [
+                {
+                    "fieldName": "id",
+                    "type": "integer",
+                    "fullyQualifiedType": "integer",
+                    "columnName": "ID",
+                    "isPrimaryKey": true,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": "identity",
+                    "isRelated": false
+                },
+                {
+                    "fieldName": "imgUrl",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "IMG_URL",
+                    "isPrimaryKey": false,
+                    "notNull": false,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false
+                },
+                {
+                    "fieldName": "category",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "CATEGORY",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false
+                },
+                {
+                    "fieldName": "price",
+                    "type": "double",
+                    "fullyQualifiedType": "double",
+                    "columnName": "PRICE",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 64,
+                    "generator": null,
+                    "isRelated": false
+                },
+                {
+                    "fieldName": "description",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "DESCRIPTION",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false
+                },
+                {
+                    "fieldName": "name",
+                    "type": "string",
+                    "fullyQualifiedType": "string",
+                    "columnName": "NAME",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false
+                },
+                {
+                    "fieldName": "availability",
+                    "type": "boolean",
+                    "fullyQualifiedType": "boolean",
+                    "columnName": "AVAILABILITY",
+                    "isPrimaryKey": false,
+                    "notNull": true,
+                    "length": 255,
+                    "precision": 19,
+                    "generator": null,
+                    "isRelated": false
+                }
+            ],
+            "entityName": "Product",
+            "fullyQualifiedName": "com.eshopping.Product"
+        }
+    }
+}
+</script>
+<script id="header.html" type="text/ng-template">
+<wm-partial data-ng-controller="headerPageController" name="header" type="header">
+    <wm-layoutgrid name="layoutgrid23" height="100%">
+        <wm-gridrow name="gridrow28">
+            <wm-gridcolumn name="gridcolumn68">
+                <wm-picture name="picture1" picturesource="bind:Variables.eshopIcon.dataSet.dataValue"></wm-picture>
+                <wm-label name="applicationName" on-click="appName" caption="bind:Variables.appName.dataSet.dataValue"class="application-name appName"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn name="gridcolumn70" horizontalalign="right" paddingtop="1" paddingunit="em" paddingright=".5">
+                <wm-search name="productSearch" class="product-search" dataset="bind:Variables.productSearch.dataSet.data" searchkey="name" displaylabel="name" displayimagesrc="imgUrl" data-ng-click="activateProductSearch($event)" on-submit="productSearchSubmit($event, $scope)"></wm-search>
+            </wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+</wm-partial>
+</script>

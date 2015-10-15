@@ -1,0 +1,25 @@
+<wm-page layouttype="one-column" columns="1" data-ng-controller="ProductsPageController" name="ProductPage">
+  <wm-header content="header" name="header" backgroundcolor="#005387" class="eshop-header" height="6em"></wm-header>
+  <wm-top-nav name="navbarprimary" class="eshop-menu" backgroundcolor="#0a3151" content="topnav"></wm-top-nav>
+  <wm-content name="content1">
+    <wm-page-content columnwidth="12" name="ProductPageContent">
+      <wm-layoutgrid name="productDetails">
+        <wm-gridrow name="gridrow2">
+          <wm-gridcolumn name="gridcolumn4" class="product-image-container" columnwidth="4" on-click="selectedItem" horizontalalign="center">
+            <wm-picture name="picture2" maxwidth="100%" picturesource="bind:'http://wmstudio-apps.s3.amazonaws.com/eshop/Products/Images' + Variables.selectedItem.dataSet.imgUrl"></wm-picture>
+          </wm-gridcolumn>
+          <wm-gridcolumn name="gridcolumn6" columnwidth="8" paddingleft="1" paddingunit="em">
+            <wm-label name="ProductName" caption="bind:Variables.selectedItem.dataSet.name" width="100%" fontsize="2" fontunit="em" marginbottom="1" marginunit="em"></wm-label>
+            <wm-label name="Availability" class="label label-success" caption="Available" show="bind:Variables.selectedItem.dataSet.availability" fontsize="1.25" fontunit="em"></wm-label>
+            <wm-label name="OutOfStock" class="label label-danger" caption="Out of Stock" show="bind:!Variables.selectedItem.dataSet.availability" fontsize="1.25" fontunit="em"></wm-label>
+            <wm-html height="auto" name="ProductDescription" content="bind:Variables.selectedItem.dataSet.description"  margintop="1" marginunit="em"></wm-html>
+            <wm-label caption="Price: $" fontweight="bold" name="product_currency" fontsize="1.25" fontunit="em" margintop="1" marginunit="em"></wm-label>
+            <wm-label name="ProductPrice" caption="bind:Variables.selectedItem.dataSet.price" fontweight="bold" fontsize="1.25" fontunit="em"></wm-label>
+            <wm-button show="bind:Variables.selectedItem.dataSet.availability" class="btn-primary" name="addToCart" caption="Add to Cart" fontsize="1.5" fontunit="em" on-click="addToCartClick($event, $scope)" iconclass="glyphicon glyphicon-shopping-cart" marginleft="1" marginunit="em"></wm-button>
+          </wm-gridcolumn>
+        </wm-gridrow>
+      </wm-layoutgrid>
+    </wm-page-content>
+  </wm-content>
+  <wm-footer name="footer" content="footer"></wm-footer>
+</wm-page>

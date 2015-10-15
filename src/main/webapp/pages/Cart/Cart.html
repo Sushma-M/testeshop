@@ -1,0 +1,57 @@
+<wm-page layouttype="one-column" columns="1" data-ng-controller="CartPageController" name="CartPage">
+  <wm-header content="header" name="header" backgroundcolor="#005387" class="eshop-header" height="6em"></wm-header>
+  <wm-top-nav name="navbarprimary" class="eshop-menu" backgroundcolor="#0a3151" content="topnav"></wm-top-nav>
+  <wm-content name="content1">
+    <wm-page-content columnwidth="12" name="CartPageContent">
+      <wm-label show="false" caption="No Items in Cart" name="no_cart_items_text" width="100%"></wm-label>
+      <wm-layoutgrid name="cartPanel" padding="2em">
+        <wm-gridrow name="gridrow3">
+          <wm-gridcolumn name="gridcolumn5" columnwidth="8" horizontalalign="left" paddingunit="em" height="auto" paddingleft="1" paddingright="1">
+            <wm-layoutgrid name="layoutgrid1" class="well">
+              <wm-gridrow name="row2">
+                <wm-gridcolumn name="column2" columnwidth="2" class="imageColumn"></wm-gridcolumn>
+                <wm-gridcolumn name="column2" columnwidth="6">
+                  <wm-label caption="Description" name="cartitems_desc"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn name="column2" columnwidth="2">
+                  <wm-label caption="Price ($)" name="cartitems_currency"></wm-label>
+                </wm-gridcolumn>
+              </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-livelist name="cartitems" class="cart-items-container" data-ng-controller="cart-itemsController" dataset="bind:Variables.cart.dataSet" listclass="list-group" itemclass="list-group-item">
+              <wm-listtemplate layout="inline" name="listtemplate1" itemclass="cart-items">
+                <wm-layoutgrid name="layoutgrid1">
+                  <wm-gridrow name="gridrow1">
+                    <wm-gridcolumn name="column2" columnwidth="2" class="imageColumn" horizontalalign="center">
+                      <wm-picture name="cart_items_thumb" picturesource="bind:Variables.cart.dataSet.product.imgUrl" pictureaspect="None" class="cart-items-thumb" height="5em"></wm-picture>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn name="column3" columnwidth="6">
+                      <wm-label name="cart_items_name" class="cart-items-name" caption="bind:Variables.cart.dataSet.product.name" width="100%"></wm-label>
+                      <wm-label name="cart_items_desc" class="cart-items-desc" caption="bind:Variables.cart.dataSet.product.description" width="100%"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn name="column4" columnwidth="2">
+                      <wm-label name="cart_items_price" class="cart-items-price" caption="bind:Variables.cart.dataSet.product.price"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn name="column5" columnwidth="2">
+                      <wm-button name="cartRemove" caption="" iconclass="glyphicon glyphicon-remove" class="btn-secondary" on-click="cartRemoveClick($event, $scope)" itemid="bind:Variables.cart.dataSet.id"></wm-button>
+                    </wm-gridcolumn>
+                  </wm-gridrow>
+                </wm-layoutgrid>
+              </wm-listtemplate>
+            </wm-livelist>
+          </wm-gridcolumn>
+          <wm-gridcolumn show="{{!cartItemsAvailable}}" name="gridcolumn6" columnwidth="4" paddingleft="1" paddingright="1" paddingunit="em">
+            <wm-container class="well" name="totalItemsPanel">
+              <wm-label name="totalItems" caption="Total Items:" width="25%"></wm-label>
+              <wm-label name="totalItems" caption="{{Variables.cart.dataSet.data.length}}" width="72%"></wm-label>
+              <wm-label name="totalPrice" caption="Total Price:" width="25%"></wm-label>
+              <wm-label name="totalPrice" caption="{{totalPrice | currency:'$ '}}" width="72%"></wm-label>
+              <wm-button caption="Checkout" name="checkout" class="btn-primary" on-click="checkoutClick($event, $scope)" iconclass="glyphicon glyphicon-transfer"></wm-button>
+            </wm-container>
+          </wm-gridcolumn>
+        </wm-gridrow>
+      </wm-layoutgrid>
+    </wm-page-content>
+  </wm-content>
+  <wm-footer name="footer" content="footer"></wm-footer>
+</wm-page>
